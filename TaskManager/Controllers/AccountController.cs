@@ -157,8 +157,10 @@ namespace TaskManager.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
+
+                    string username = Request["username"];
                     //registers a new user in database.
-                    AccountManager.register(user.Id, user.Email);
+                    AccountManager.register(user.Id, username);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

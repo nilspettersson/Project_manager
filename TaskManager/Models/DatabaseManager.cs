@@ -10,7 +10,6 @@ namespace TaskManager.Models
     public static class DatabaseManager
     {
         public static DataRowCollection Execute(string sql)
-
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nils-\source\repos\TaskManager\TaskManager\App_Data\task_manager_db.mdf;Integrated Security=True");
             con.Open();

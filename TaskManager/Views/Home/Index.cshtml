@@ -3,13 +3,9 @@
     ViewBag.Title = "Home Page";
 
 }
-
-@if (Request.IsAuthenticated)
-{
     <div>
-        <h1>@User.Identity.GetUserName()</h1>
+        <h1>@ViewData["username"]</h1>
     </div>
-}
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

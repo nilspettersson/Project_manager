@@ -13,6 +13,14 @@ namespace TaskManager.Controllers
         public ActionResult Index()
         {
 
+            string username = "not logged in";
+            if (User.Identity.IsAuthenticated)
+            {
+                username = AccountManager.getNameById(User.Identity.GetUserId());
+                
+            }
+            ViewData["username"] = username;
+
             //System.Diagnostics.Debug.WriteLine("hello there!!!! " + User.Identity.GetUserName());
             /*var result = DatabaseManager.Execute("select * from account");
 
@@ -24,7 +32,8 @@ namespace TaskManager.Controllers
                 System.Diagnostics.Debug.WriteLine(result[row]["username"]);
                 System.Diagnostics.Debug.WriteLine("");
             }*/
-            
+
+
 
             return View();
         }
