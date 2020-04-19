@@ -16,12 +16,13 @@ namespace TaskManager.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult CreateProject()
         {
 
             AccountManager.createProject(User.Identity.GetUserId(), Request["name"], Request["description"]);
 
-            return Content("hello there");
+            return Content("");
         }
 
     }

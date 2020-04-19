@@ -4,5 +4,6 @@ register backend:		done
 add username frontend:		done
 create projects backend:	done
 create projects frontend:
-show user projects:
-select project frontend backend:
+show user projects:		
+change to async task:		
+select project:
