@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "index";
+}
+
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_CreateProject");
+}
+else { 
+    <h3>you are not logged.</h3>
+}

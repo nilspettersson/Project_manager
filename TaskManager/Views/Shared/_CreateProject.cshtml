@@ -1,0 +1,28 @@
+﻿<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<h3>Create project</h3>
+@using (Ajax.BeginForm("CreateProject", "ProjectManager", new AjaxOptions {
+        HttpMethod = "GET", UpdateTargetId = "message", InsertionMode = InsertionMode.InsertBefore
+    }))
+{
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Project name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" placeholder="project name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">project description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="description" placeholder="project description">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create project</button>
+        </div>
+    </div>
+}
+
+<div id="message"></div>
