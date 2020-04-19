@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaskManager.Models;
+using Microsoft.AspNet.Identity;
 
 namespace TaskManager.Controllers
 {
@@ -16,6 +18,8 @@ namespace TaskManager.Controllers
 
         public ActionResult CreateProject()
         {
+
+            AccountManager.createProject(User.Identity.GetUserId(), Request["name"], Request["description"]);
 
             return Content("hello there");
         }
