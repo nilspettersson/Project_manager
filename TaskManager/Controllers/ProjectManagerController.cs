@@ -13,6 +13,13 @@ namespace TaskManager.Controllers
         // GET: ProjectManager
         public ActionResult Index()
         {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                 ViewBag.projects = AccountManager.getAllProjects(User.Identity.GetUserId());
+            }
+            
+
             return View();
         }
 

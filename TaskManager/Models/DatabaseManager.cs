@@ -13,25 +13,42 @@ namespace TaskManager.Models
 
         public static DataRowCollection Execute(string sql)
         {
-            if(con.State == ConnectionState.Open)
+
+            DataTable dt;
+            try
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                con.Open();
+
+                System.Diagnostics.Debug.WriteLine("sql: " + sql);
+                SqlCommand command = con.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = sql;
+                //command.ExecuteNonQuery();
+
+                SqlDataAdapter adp = new SqlDataAdapter(command);
+                dt = new DataTable();
+                adp.Fill(dt);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
             {
                 con.Close();
             }
-            con.Open();
-
-            System.Diagnostics.Debug.WriteLine("sql: "+sql);
-            SqlCommand command = con.CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = sql;
-            //command.ExecuteNonQuery();
             
-            SqlDataAdapter adp = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
+            
 
-            con.Close();
+            
 
             return dt.Rows;
+
+
         }
 
     }
