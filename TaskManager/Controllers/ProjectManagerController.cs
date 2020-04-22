@@ -26,7 +26,7 @@ namespace TaskManager.Controllers
         [HttpPost]
         public ActionResult CreateProject()
         {
-
+            System.Diagnostics.Debug.WriteLine("asddasasdasdasdasdasdsadsadssdasdasdasdsadasd");
             AccountManager.createProject(User.Identity.GetUserId(), Request["name"], Request["description"]);
 
             return Content("");

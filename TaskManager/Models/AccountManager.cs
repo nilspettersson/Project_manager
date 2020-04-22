@@ -34,7 +34,7 @@ namespace TaskManager.Models
 
         }
 
-        public static DataRowCollection getAllProjects(string user_id)
+        public static DataRowCollection getAllProjects(string userId)
         {
 
             return DatabaseManager.Execute("select * from project inner join user_project_role on project.id = user_project_role.project_id");

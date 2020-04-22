@@ -14,7 +14,7 @@
 <div class="container pt-5">
 
     <!--menu start-->
-    <button class="btn btn-outline-success mr-3" data-toggle="modal" data-target="#modal">new project</button>
+    <button id="new" class="btn btn-outline-success mr-3" data-toggle="modal" data-target="#modal">new project</button>
 
     <div class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,10 +37,29 @@
 
     <!--menu end-->
 
+    @foreach (var project in ViewBag.projects)
+    {
+        <div class="card w-auto mt-2">
+            <div class="card-body">
+                <button class="btn btn-outline-primary float-right">
+                    go to project
+                </button>
+
+                <h4 class="card-title">@project["name"]</h4>
 
 
+                <p class="text-primary pt-3" type="button" data-toggle="collapse" data-target="#desc1" aria-expanded="false" aria-controls="collapseExample">
+                    show description
+                </p>
 
-    
+                <div class="collapse" id="desc1">
+                    <p class="card-text">@project["description"]</p>
+                </div>
+
+            </div>
+        </div>
+    }
+
 
 </div>
 

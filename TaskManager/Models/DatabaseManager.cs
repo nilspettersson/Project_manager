@@ -9,43 +9,24 @@ namespace TaskManager.Models
 {
     public static class DatabaseManager
     {
-        public static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nils-\source\repos\TaskManager\TaskManager\App_Data\task_manager_db.mdf;Integrated Security=True");
 
         public static DataRowCollection Execute(string sql)
         {
+            string cs = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nils-\source\repos\TaskManager\TaskManager\App_Data\task_manager_db.mdf;Integrated Security=True";
 
-            DataTable dt;
-            try
+            DataTable dt = null;
+            using (SqlConnection con = new SqlConnection(cs))
             {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-                con.Open();
-
                 System.Diagnostics.Debug.WriteLine("sql: " + sql);
                 SqlCommand command = con.CreateCommand();
                 command.CommandType = CommandType.Text;
                 command.CommandText = sql;
-                //command.ExecuteNonQuery();
+                con.Open();
 
                 SqlDataAdapter adp = new SqlDataAdapter(command);
                 dt = new DataTable();
                 adp.Fill(dt);
             }
-            catch(Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                con.Close();
-            }
-            
-            
-
-            
-
             return dt.Rows;
 
 
