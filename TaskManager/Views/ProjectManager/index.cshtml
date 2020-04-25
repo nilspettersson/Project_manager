@@ -48,11 +48,11 @@
                 <h4 class="card-title">@project["name"]</h4>
 
 
-                <p class="text-primary pt-3" type="button" data-toggle="collapse" data-target="#desc1" aria-expanded="false" aria-controls="collapseExample">
+                <p class="text-primary pt-3" type="button" data-toggle="collapse" data-target="#desc_@project["id"]" aria-expanded="false" aria-controls="collapseExample">
                     show description
                 </p>
 
-                <div class="collapse" id="desc1">
+                <div class="collapse" id="desc_@project["id"]">
                     <p class="card-text">@project["description"]</p>
                 </div>
 
