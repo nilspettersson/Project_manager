@@ -1,8 +1,6 @@
 ﻿$(function () {
-    console.log("hello");
+
     $("#save").click(function () {
-        //console.log($("#name").val());
-        //console.log($("#description").val());
         $.ajax({
             url: "https://localhost:44373/ProjectManager/CreateProject",
             type: "POST",
@@ -16,11 +14,8 @@
             }
         });
 
-
-
     });
 
+
+
 });
-
-
-//@using(Ajax.BeginForm("CreateProject", "ProjectManager", new AjaxOptions{ HttpMethod = "POST" }))

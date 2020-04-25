@@ -161,7 +161,7 @@ namespace TaskManager.Controllers
 
                     string username = Request["username"];
                     //registers a new user in database.
-                    AccountManager.register(user.Id, username);
+                    Dao.Account.register(user.Id, username);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

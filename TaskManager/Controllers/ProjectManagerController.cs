@@ -16,18 +16,31 @@ namespace TaskManager.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                 ViewBag.projects = AccountManager.getAllProjects(User.Identity.GetUserId());
+                 ViewBag.projects = Dao.Projects.getAllProjects();
             }
             
 
             return View();
         }
+        public ActionResult Users(string user, string project)
+        {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                //ViewBag.projects = Dao.Projects.getAllProjects();
+            }
+
+
+            return Content("hello "+user);
+        }
+
+
+
 
         [HttpPost]
         public ActionResult CreateProject()
         {
-            System.Diagnostics.Debug.WriteLine("asddasasdasdasdasdasdsadsadssdasdasdasdsadasd");
-            AccountManager.createProject(User.Identity.GetUserId(), Request["name"], Request["description"]);
+            Dao.Account.createProject(User.Identity.GetUserId(), Request["name"], Request["description"]);
 
             return Content("");
         }

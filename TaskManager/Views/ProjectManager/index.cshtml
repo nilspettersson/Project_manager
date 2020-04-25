@@ -27,7 +27,6 @@
     </div>
 
 
-
     <form class="form-inline my-2 my-lg-0 float-sm-right">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary">
@@ -41,16 +40,16 @@
     {
         <div class="card w-auto mt-2">
             <div class="card-body">
-                <button class="btn btn-outline-primary float-right">
+                <a href="https://localhost:44373/ProjectManager/users/@project["username"]/@project["name"]" id="@project["name"]" class="btn btn-outline-primary float-right projects">
                     go to project
-                </button>
+                </a>
 
                 <h4 class="card-title">@project["name"]</h4>
 
 
-                <p class="text-primary pt-3" type="button" data-toggle="collapse" data-target="#desc_@project["id"]" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-link text-primary pt-3" type="button" data-toggle="collapse" data-target="#desc_@project["id"]" aria-expanded="false" aria-controls="collapseExample">
                     show description
-                </p>
+                </button>
 
                 <div class="collapse" id="desc_@project["id"]">
                     <p class="card-text">@project["description"]</p>

@@ -16,7 +16,7 @@ namespace TaskManager.Controllers
             string username = "not logged in";
             if (User.Identity.IsAuthenticated)
             {
-                username = AccountManager.getNameById(User.Identity.GetUserId());
+                username = Dao.Account.getNameById(User.Identity.GetUserId());
                 
             }
             ViewData["username"] = username;
