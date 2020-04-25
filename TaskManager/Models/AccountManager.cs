@@ -16,6 +16,7 @@ namespace TaskManager.Models
             DatabaseManager.Execute("insert into account (auth_id, username) values('" + userId + "', '" + username + "')");
 
         }
+        
         public static string getNameById(string userId)
         {
             var row = DatabaseManager.Execute("select username from account where auth_id = '" + userId + "'");

@@ -15,8 +15,8 @@ namespace TaskManager
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ProjectManager", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{user}/{project}",
+                defaults: new { controller = "ProjectManager", action = "Index", user = UrlParameter.Optional, project = UrlParameter.Optional }
             );
         }
     }

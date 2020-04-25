@@ -5,6 +5,5 @@ add username frontend:		done
 create projects backend:	done
 create projects frontend:	done
 show user projects:		done
-change id type:			
 change to async task:		
 select project:
