@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TaskManager.Models;
 using Microsoft.AspNet.Identity;
+using System.Data;
 
 namespace TaskManager.Controllers
 {
@@ -31,8 +32,21 @@ namespace TaskManager.Controllers
 
             if (project == null && user != null)
             {
-                string id = User.Identity.GetUserId();
-                ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                if (User.Identity.IsAuthenticated)
+                {
+                    string username = Dao.Account.getUsername(User.Identity.GetUserId());
+                    if (username == user)
+                    {
+                        ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                    }
+                    else
+                    {
+                        
+
+                        //ViewBag.projects = new DataRowCollection
+                    }
+                }
+                
                 return View();
             }
             else

@@ -10,7 +10,7 @@ namespace TaskManager.Models
     public static class Dao
     {
 
-        private static DataRowCollection Execute(string sql)
+        private static DataRow Execute(string sql)
         {
             string cs = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\vs\TaskManager\TaskManager\App_Data\task_manager_db.mdf;Integrated Security=True";
             DataTable dt = null;
@@ -26,7 +26,14 @@ namespace TaskManager.Models
                 dt = new DataTable();
                 adp.Fill(dt);
             }
-            return dt.Rows;
+
+            DataRow[] rows = new DataRow[dt.Rows.Count];
+            for(int i = 0; i<dt.Rows.Count; i++)
+            {
+                rows[i] = dt.Rows[i];
+            }
+
+            return rows;
 
 
         }
