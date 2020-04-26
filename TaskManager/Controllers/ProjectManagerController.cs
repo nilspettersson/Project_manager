@@ -35,15 +35,15 @@ namespace TaskManager.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     string username = Dao.Account.getUsername(User.Identity.GetUserId());
+                    //if you own the user page you can see the projects.
                     if (username == user)
                     {
                         ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
                     }
                     else
                     {
-                        
-
-                        //ViewBag.projects = new DataRowCollection
+                        //if you are not allowed to see page.
+                        ViewBag.projects = new DataRow[0];
                     }
                 }
                 

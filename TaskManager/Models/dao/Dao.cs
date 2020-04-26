@@ -10,7 +10,7 @@ namespace TaskManager.Models
     public static class Dao
     {
 
-        private static DataRow Execute(string sql)
+        private static DataRow[] Execute(string sql)
         {
             string cs = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\vs\TaskManager\TaskManager\App_Data\task_manager_db.mdf;Integrated Security=True";
             DataTable dt = null;
@@ -50,7 +50,7 @@ namespace TaskManager.Models
             public static string getUsername(string userId)
             {
                 var row = Dao.Execute("select username from account where auth_id = '" + userId + "'");
-                if(row.Count == 0)
+                if(row.Length == 0)
                 {
                     return null;
                 }
@@ -66,14 +66,14 @@ namespace TaskManager.Models
 
             }
             
-            public static DataRowCollection getAllProjects(string userId)
+            public static DataRow[] getAllProjects(string userId)
             {
                 return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
                     " inner join user_project_role on project.id = user_project_role.project_id" +
                     " inner join account on account.auth_id = user_project_role.user_id" +
                     " where account.auth_id = '" + userId + "'");
             }
-            public static DataRowCollection getAllProjectsByUsername(string username)
+            public static DataRow[] getAllProjectsByUsername(string username)
             {
                 return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
                     " inner join user_project_role on project.id = user_project_role.project_id" +
@@ -84,8 +84,8 @@ namespace TaskManager.Models
 
             public static bool usernameExists(string username)
             {
-                DataRowCollection rows = Dao.Execute("select username from account where username = '" + username+"'");
-                if(rows.Count == 0)
+                DataRow[] rows = Dao.Execute("select username from account where username = '" + username+"'");
+                if(rows.Length == 0)
                 {
                     return false;
                 }
@@ -97,7 +97,7 @@ namespace TaskManager.Models
 
         public static class Projects
         {
-            public static DataRowCollection getAllProjects()
+            public static DataRow[] getAllProjects()
             {
                 return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
                     " inner join user_project_role on project.id = user_project_role.project_id" +
