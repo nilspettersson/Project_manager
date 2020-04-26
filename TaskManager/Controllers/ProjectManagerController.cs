@@ -13,31 +13,47 @@ namespace TaskManager.Controllers
         // GET: ProjectManager
         public ActionResult Index()
         {
-
             if (User.Identity.IsAuthenticated)
             {
-                 ViewBag.projects = Dao.Projects.getAllProjects();
+                ViewBag.username = Dao.Account.getUsername(User.Identity.GetUserId());
             }
-            
 
+            ViewBag.projects = Dao.Projects.getAllProjects();
             return View();
         }
         public ActionResult Users(string user, string project)
         {
-            string message = "this is not your project";
             if (User.Identity.IsAuthenticated)
             {
-                //checks if the user owns this project.
-                string username = Dao.Account.getUsername(User.Identity.GetUserId());
-                if(username == user)
-                {
-                    message = "this is your project";
-                }
+                ViewBag.username = Dao.Account.getUsername(User.Identity.GetUserId());
             }
 
 
-            return Content("user: "+user+" project: "+project+"  "+message);
+            if (project == null && user != null)
+            {
+                string id = User.Identity.GetUserId();
+                ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                return View();
+            }
+            else
+            {
+                string message = "this is not your project";
+                if (User.Identity.IsAuthenticated)
+                {
+                    //checks if the user owns this project.
+                    string username = Dao.Account.getUsername(User.Identity.GetUserId());
+                    if (username == user)
+                    {
+                        message = "this is your project";
+                    }
+                }
+
+
+                return Content("user: " + user + " project: " + project + "  " + message);
+            }
+            
         }
+
 
 
 

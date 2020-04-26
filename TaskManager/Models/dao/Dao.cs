@@ -43,6 +43,10 @@ namespace TaskManager.Models
             public static string getUsername(string userId)
             {
                 var row = Dao.Execute("select username from account where auth_id = '" + userId + "'");
+                if(row.Count == 0)
+                {
+                    return null;
+                }
                 return row[0][0].ToString();
             }
 
@@ -57,8 +61,19 @@ namespace TaskManager.Models
             
             public static DataRowCollection getAllProjects(string userId)
             {
-                return Dao.Execute("select * from project inner join user_project_role on project.id = user_project_role.project_id");
+                return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
+                    " inner join user_project_role on project.id = user_project_role.project_id" +
+                    " inner join account on account.auth_id = user_project_role.user_id" +
+                    " where account.auth_id = '" + userId + "'");
             }
+            public static DataRowCollection getAllProjectsByUsername(string username)
+            {
+                return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
+                    " inner join user_project_role on project.id = user_project_role.project_id" +
+                    " inner join account on account.auth_id = user_project_role.user_id" +
+                    " where account.username = '" + username + "'");
+            }
+
 
             public static bool usernameExists(string username)
             {
@@ -75,7 +90,6 @@ namespace TaskManager.Models
 
         public static class Projects
         {
-
             public static DataRowCollection getAllProjects()
             {
                 return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
@@ -84,8 +98,6 @@ namespace TaskManager.Models
             }   
 
         }
-
-
 
     }
 

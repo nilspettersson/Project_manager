@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark position-fixed fixed-top">
         <a class="navbar-brand" href="#">
-            @Html.ActionLink("Project manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Project manager", "Index", "ProjectManager", new { area = "" }, new { @class = "navbar-brand" })
         </a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,10 +30,18 @@
         <div class="navbar-collapse collapse" id="nav" style="">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("My projects", "Users", "ProjectManager", new { user = ViewBag.username }, new { @class = "nav-link" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("My projects", "Users", "ProjectManager", new { user = "not logged in" }, new { @class = "nav-link" })
+                    }
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })
+                    @Html.ActionLink("Explore", "Index", "ProjectManager", new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })
@@ -42,29 +52,8 @@
 
         </div>
     </nav>
-    
 
 
-    <!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </nav>-->
     <div class="container body-content">
         @RenderBody()
         <hr />
