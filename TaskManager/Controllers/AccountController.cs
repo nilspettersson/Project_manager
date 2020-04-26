@@ -151,6 +151,7 @@ namespace TaskManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ViewBag.usernameExists = false;
             if (ModelState.IsValid)
             {
 
