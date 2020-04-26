@@ -24,14 +24,19 @@ namespace TaskManager.Controllers
         }
         public ActionResult Users(string user, string project)
         {
-
+            string message = "this is not your project";
             if (User.Identity.IsAuthenticated)
             {
-                //ViewBag.projects = Dao.Projects.getAllProjects();
+                //checks if the user owns this project.
+                string username = Dao.Account.getUsername(User.Identity.GetUserId());
+                if(username == user)
+                {
+                    message = "this is your project";
+                }
             }
 
 
-            return Content("hello "+user);
+            return Content("user: "+user+" project: "+project+"  "+message);
         }
 
 

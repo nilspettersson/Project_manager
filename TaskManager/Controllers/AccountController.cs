@@ -140,6 +140,7 @@ namespace TaskManager.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.usernameExists = false;
             return View();
         }
 
@@ -152,6 +153,17 @@ namespace TaskManager.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                string username = Request["username"];
+                if (Dao.Account.usernameExists(username))
+                {
+                    ViewBag.usernameExists = true;
+                    return View(model);
+                }
+
+
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -159,9 +171,10 @@ namespace TaskManager.Controllers
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
 
-                    string username = Request["username"];
+                    
                     //registers a new user in database.
                     Dao.Account.register(user.Id, username);
+
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
