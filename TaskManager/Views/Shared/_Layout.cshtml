@@ -33,7 +33,7 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @Html.ActionLink("My projects", "Users", "ProjectManager", new { user = ViewBag.username }, new { @class = "nav-link" })
+                        @Html.ActionLink("My projects", "Users", "ProjectManager", new { user = ViewBag.username, project = "" }, new { @class = "nav-link" })
                     }
                     else
                     {

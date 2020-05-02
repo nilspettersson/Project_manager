@@ -46,7 +46,8 @@ namespace TaskManager.Controllers
                         ViewBag.projects = new DataRow[0];
                     }
                 }
-                
+
+                ViewBag.isProject = false;
                 return View();
             }
             else
@@ -62,8 +63,9 @@ namespace TaskManager.Controllers
                     }
                 }
 
-
-                return Content("user: " + user + " project: " + project + "  " + message);
+                ViewBag.isProject = true;
+                ViewBag.projectName = project;
+                return View();
             }
             
         }

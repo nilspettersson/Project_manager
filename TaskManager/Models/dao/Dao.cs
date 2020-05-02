@@ -12,7 +12,7 @@ namespace TaskManager.Models
 
         private static DataRow[] Execute(string sql)
         {
-            string cs = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\vs\TaskManager\TaskManager\App_Data\task_manager_db.mdf;Integrated Security=True";
+            string cs = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\task_manager_db.mdf;Integrated Security=True";
             DataTable dt = null;
             using (SqlConnection con = new SqlConnection(cs))
             {

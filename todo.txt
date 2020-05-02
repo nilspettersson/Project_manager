@@ -7,3 +7,7 @@ create projects frontend:	done
 show user projects:		done
 change to async task:		
 select project:			done
+project page:			
+
+
+https://localhost:44373/
