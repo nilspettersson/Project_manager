@@ -22,7 +22,7 @@ namespace TaskManager.Controllers
             ViewBag.projects = Dao.Projects.getAllProjects();
             return View();
         }
-        public ActionResult Users(string user, string project)
+        public ActionResult Users(string user, string project, string type)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -30,6 +30,7 @@ namespace TaskManager.Controllers
             }
 
 
+            //shows all project for  user.
             if (project == null && user != null)
             {
                 if (User.Identity.IsAuthenticated)
@@ -50,21 +51,32 @@ namespace TaskManager.Controllers
                 ViewBag.isProject = false;
                 return View();
             }
+
+            //if a project is selected.
             else
             {
-                string message = "this is not your project";
-                if (User.Identity.IsAuthenticated)
+                if(type == null)
                 {
-                    //checks if the user owns this project.
-                    string username = Dao.Account.getUsername(User.Identity.GetUserId());
-                    if (username == user)
+                    if (User.Identity.IsAuthenticated)
                     {
-                        message = "this is your project";
+                        //checks if the user owns this project.
+                        string username = Dao.Account.getUsername(User.Identity.GetUserId());
+                        if (username == user)
+                        {
+                            
+                        }
                     }
+                    ViewBag.type = "overview";
                 }
+                else if(type == "sprint")
+                {
+                    ViewBag.type = "sprint";
+                }
+                
 
                 ViewBag.isProject = true;
                 ViewBag.projectName = project;
+                ViewBag.userName = user;
                 return View();
             }
             

@@ -1,15 +1,25 @@
 ﻿<div class="container pt-5">
 
     <!--menu start-->
-    <button id="overview" class="btn btn-outline-primary mr-3" data-toggle="modal" data-target="#modal">Overview</button>
-    <button id="sprint" class="btn btn-outline-primary mr-3" data-toggle="modal" data-target="#modal">sprint</button>
-    <button id="backlog" class="btn btn-outline-primary mr-3" data-toggle="modal" data-target="#modal">Backlog</button>
-    <button id="stats" class="btn btn-outline-primary mr-3" data-toggle="modal" data-target="#modal">Stats</button>
+    @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn-outline-primary mr-3" })
+    @Html.ActionLink("sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn-outline-primary mr-3" })
+    @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn-outline-primary mr-3" })
+    @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn-outline-primary mr-3" })
     <!--menu end-->
 
-    <div class="mt-4">
-        <h2>@ViewBag.projectName</h2>
-    </div>
+    @if (ViewBag.type == "overview")
+    {
+        <div class="mt-4">
+            <h2>@ViewBag.projectName</h2>
+        </div>
+    }
+    else if (ViewBag.type == "sprint")
+    {
+        <div class="mt-4">
+            <h2>sprint!!</h2>
+        </div>
+    }
+
 
 
 </div>
