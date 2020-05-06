@@ -92,7 +92,17 @@ namespace TaskManager.Models
                 return true;
             }
 
+            public static DataRow[] getCurrentSprint(string projectName)
+            {
+                DataRow[] rows = Execute("select * from sprint inner join project_sprint on project_sprint.id = sprint.id " +
+                    "inner join project on project_sprint.project_id = project.id " +
+                    "where project.name = " + "'"+projectName+"'");
+                
+                return rows;
+            }
+
         }
+
 
 
         public static class Projects

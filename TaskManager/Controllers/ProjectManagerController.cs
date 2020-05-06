@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TaskManager.Models;
 using Microsoft.AspNet.Identity;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace TaskManager.Controllers
 {
@@ -70,6 +71,18 @@ namespace TaskManager.Controllers
                 }
                 else if(type == "sprint")
                 {
+
+                    DataRow[] rows = Dao.Account.getCurrentSprint(project);
+
+                    if (rows.Length == 0)
+                    {
+                        ViewBag.sprintExists = false;
+                    }
+                    else
+                    {
+                        ViewBag.sprintExists = true;
+                    }
+
                     ViewBag.type = "sprint";
                 }
                 
