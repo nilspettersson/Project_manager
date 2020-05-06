@@ -355,6 +355,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\ProjectManager\Users.cshtml" />
     <Content Include="Views\ProjectManager\_Project.cshtml" />
+    <Content Include="Views\Shared\_CreateSprint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

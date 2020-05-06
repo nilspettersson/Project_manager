@@ -107,5 +107,14 @@ namespace TaskManager.Controllers
             return Content("");
         }
 
+        [HttpPost]
+        public ActionResult CreateSprint()
+        {
+            System.Diagnostics.Debug.WriteLine("doing shit****************************************************");
+            //Dao.Account.createSprint(User.Identity.GetUserId(), Request["name"]);
+
+            return Content("");
+        }
+
     }
 }

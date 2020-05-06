@@ -15,13 +15,12 @@
     }
     else if (ViewBag.type == "sprint")
     {
-        <div class="mt-4">
-            <h2>sprint!!</h2>
-        </div>
 
         if (ViewBag.sprintExists == false)
         {
-            <h1>you have no sprints!!!</h1>
+            @Html.Partial("_CreateSprint");
+            <h1 class="mt-5">you have not created any sprints yet.</h1>
+            <button id="new_sprint" class="btn btn-outline-success mr-3" data-toggle="modal" data-target="#sprint_modal">new sprint</button>
         }
     }
 
