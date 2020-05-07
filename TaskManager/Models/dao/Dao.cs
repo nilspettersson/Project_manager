@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Mvc.Ajax;
+using Microsoft.Ajax.Utilities;
 
 namespace TaskManager.Models
 {
@@ -56,6 +58,15 @@ namespace TaskManager.Models
                 }
                 return row[0][0].ToString();
             }
+            public static string getUserIdByName(string userName)
+            {
+                var row = Dao.Execute("select auth_id from account where username = '" + userName + "'");
+                if (row.Length == 0)
+                {
+                    return null;
+                }
+                return row[0][0].ToString();
+            }
 
             public static void createProject(string userId, string projectName, string projectDescription)
             {
@@ -99,6 +110,30 @@ namespace TaskManager.Models
                     "where project.name = " + "'"+projectName+"'");
                 
                 return rows;
+            }
+
+            public static void createSprint(string projectId, string name, string start_time, string end_time)
+            {
+                //string project_id = Dao.Execute("insert into project (name, description) values('" + projectName + "', '" + projectDescription + "');" +
+                //"SELECT SCOPE_IDENTITY();")[0][0].ToString();
+
+                //Dao.Execute("insert into user_project_role(user_id, project_id, role_id) values('" + userId + "', '" + project_id + "', 1)");
+                string sprint_id = Execute("insert into sprint(name, start_time, end_time) values('"+name+"', '"+start_time+"', '"+end_time+"'); " +
+                                            "select SCOPE_IDENTITY();")[0][0].ToString();
+
+                Execute("insert into project_sprint(project_id, sprint_id) values('"+projectId+ "', '"+sprint_id+"')");
+            }
+
+            public static string getProjectId(string user, string projectName)
+            {
+                DataRow[] row = Execute("select project_id from user_project_role inner join project on user_project_role.project_id = project.id " +
+                               "where user_project_role.user_id = '" + user+"' and project.name = '"+projectName+"' ");
+
+                if (row.Length == 0)
+                {
+                    return null;
+                }
+                return row[0][0].ToString();
             }
 
         }

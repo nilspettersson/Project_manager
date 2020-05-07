@@ -115,9 +115,11 @@ namespace TaskManager.Controllers
             time = time.AddDays(Double.Parse(weeks) * 7);
             string end_time = time.ToString();
 
-            System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name );
+            //System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name );
 
-            //Dao.Account.createSprint(User.Identity.GetUserId());
+            string userId = Dao.Account.getUserIdByName(user);
+            string projectId = Dao.Account.getProjectId(userId, project);
+            //Dao.Account.createSprint(project, name, start_time, end_time);
             return Content("");
         }
 
