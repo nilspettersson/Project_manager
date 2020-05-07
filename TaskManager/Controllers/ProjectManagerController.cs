@@ -119,7 +119,7 @@ namespace TaskManager.Controllers
 
             string userId = Dao.Account.getUserIdByName(user);
             string projectId = Dao.Account.getProjectId(userId, project);
-            //Dao.Account.createSprint(project, name, start_time, end_time);
+            Dao.Account.createSprint(projectId, name, start_time, end_time);
             return Content("");
         }
 

@@ -119,7 +119,7 @@ namespace TaskManager.Models
 
                 //Dao.Execute("insert into user_project_role(user_id, project_id, role_id) values('" + userId + "', '" + project_id + "', 1)");
                 string sprint_id = Execute("insert into sprint(name, start_time, end_time) values('"+name+"', '"+start_time+"', '"+end_time+"'); " +
-                                            "select SCOPE_IDENTITY();")[0][0].ToString();
+                    "select SCOPE_IDENTITY();")[0][0].ToString();
 
                 Execute("insert into project_sprint(project_id, sprint_id) values('"+projectId+ "', '"+sprint_id+"')");
             }
@@ -127,7 +127,7 @@ namespace TaskManager.Models
             public static string getProjectId(string user, string projectName)
             {
                 DataRow[] row = Execute("select project_id from user_project_role inner join project on user_project_role.project_id = project.id " +
-                               "where user_project_role.user_id = '" + user+"' and project.name = '"+projectName+"' ");
+                    "where user_project_role.user_id = '" + user+"' and project.name = '"+projectName+"' ");
 
                 if (row.Length == 0)
                 {
