@@ -21,8 +21,10 @@
             url: "https://localhost:44373/ProjectManager/CreateSprint",
             type: "POST",
             data: {
-                name: $("#name").val()
-            },
+                name: $("#name").val(),
+                start_time: $("#sprint_start_time").val(),
+                weeks: $("#sprint_weeks").val()
+            }, 
             success: function (result) {
                 location.reload(false);
             }

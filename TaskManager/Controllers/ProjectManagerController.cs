@@ -110,9 +110,16 @@ namespace TaskManager.Controllers
         [HttpPost]
         public ActionResult CreateSprint()
         {
-            System.Diagnostics.Debug.WriteLine("doing shit****************************************************");
-            //Dao.Account.createSprint(User.Identity.GetUserId(), Request["name"]);
+            string startTime = Request["start_time"];
+            string weeks = Request["weeks"];
 
+            DateTime time = DateTime.Parse(startTime);
+            time = time.AddDays(Double.Parse(weeks) * 7);
+            string end_time = time.ToString();
+
+            System.Diagnostics.Debug.WriteLine("************************* "+ end_time);
+
+            //Dao.Account.createSprint(User.Identity.GetUserId());
             return Content("");
         }
 
