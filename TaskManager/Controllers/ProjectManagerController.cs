@@ -98,7 +98,7 @@ namespace TaskManager.Controllers
 
 
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult CreateProject()
         {
@@ -107,17 +107,15 @@ namespace TaskManager.Controllers
             return Content("");
         }
 
+        [Authorize]
         [HttpPost]
-        public ActionResult CreateSprint()
+        public ActionResult CreateSprint(string name, string start_time, string weeks, string user, string project)
         {
-            string startTime = Request["start_time"];
-            string weeks = Request["weeks"];
-
-            DateTime time = DateTime.Parse(startTime);
+            DateTime time = DateTime.Parse(start_time);
             time = time.AddDays(Double.Parse(weeks) * 7);
             string end_time = time.ToString();
 
-            System.Diagnostics.Debug.WriteLine("************************* "+ end_time);
+            System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name );
 
             //Dao.Account.createSprint(User.Identity.GetUserId());
             return Content("");
