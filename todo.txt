@@ -7,7 +7,17 @@ create projects frontend:	done
 show user projects:		done
 change to async task:		
 select project:			done
-project page:			
-
+create sprint:			done;
+project page:	
+	sprint:		
+		show current sprint:	
+		show if sprint has concluded:	
+	overview:
+		
+	backlog:
+		
+	user invit:
+	
+	
 
 https://localhost:44373/

@@ -15,6 +15,7 @@
 
     });
 
+
     $("#sprint_create").click(function () {
 
         $.ajax({

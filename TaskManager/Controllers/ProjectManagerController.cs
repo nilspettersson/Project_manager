@@ -56,6 +56,7 @@ namespace TaskManager.Controllers
             //if a project is selected.
             else
             {
+                //overview
                 if(type == null)
                 {
                     if (User.Identity.IsAuthenticated)
@@ -69,11 +70,13 @@ namespace TaskManager.Controllers
                     }
                     ViewBag.type = "overview";
                 }
+                //sprint
                 else if(type == "sprint")
                 {
-
+                    //finding the last created sprint.
                     DataRow[] rows = Dao.Account.getCurrentSprint(project);
 
+                    //checks if the project has any sprints.
                     if (rows.Length == 0)
                     {
                         ViewBag.sprintExists = false;
@@ -81,11 +84,13 @@ namespace TaskManager.Controllers
                     else
                     {
                         ViewBag.sprintExists = true;
+                        //sprintEndTime = row
+
+
                     }
 
                     ViewBag.type = "sprint";
                 }
-                
 
                 ViewBag.isProject = true;
                 ViewBag.projectName = project;
@@ -94,8 +99,6 @@ namespace TaskManager.Controllers
             }
             
         }
-
-
 
 
         [Authorize]

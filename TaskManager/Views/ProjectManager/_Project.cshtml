@@ -2,7 +2,7 @@
 
     <!--menu start-->
     @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn-outline-primary mr-3" })
-    @Html.ActionLink("sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn-outline-primary mr-3" })
+    @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn-outline-primary mr-3" })
     @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn-outline-primary mr-3" })
     @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn-outline-primary mr-3" })
     <!--menu end-->
@@ -19,8 +19,19 @@
         if (ViewBag.sprintExists == false)
         {
             @Html.Partial("_CreateSprint");
-            <h1 class="mt-5">you have not created any sprints yet.</h1>
-            <button id="new_sprint" class="btn btn-outline-success mr-3" data-toggle="modal" data-target="#sprint_modal">new sprint</button>
+
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="display-4">You have no active sprint</h5>
+                    <p class="card-text">Create a sprint to start to using this page!.</p>
+                    <button id="new_sprint" class="btn btn-outline-success " data-toggle="modal" data-target="#sprint_modal">new sprint</button>
+                </div>
+            </div>
+
+        }
+        else
+        {
+
         }
     }
 
