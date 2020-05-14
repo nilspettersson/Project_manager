@@ -1,10 +1,12 @@
-﻿<div class="container pt-5">
+﻿<script src="~/Scripts/js/sprint.js"></script>
+
+<div class="container pt-4">
 
     <!--menu start-->
-    @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn-outline-primary mr-3" })
-    @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn-outline-primary mr-3" })
-    @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn-outline-primary mr-3" })
-    @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn-outline-primary mr-3" })
+    @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn btn-secondary mr-3" })
+    @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn btn-secondary mr-3" })
+    @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn btn-secondary mr-3" })
+    @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn btn-secondary mr-3" })
     <!--menu end-->
 
     @if (ViewBag.type == "overview")
@@ -41,6 +43,70 @@
 
             <h3>@ViewBag.sprint["name"]</h3>
             <h5>Time left: @days days @hours hours </h5>
+
+
+            <div class="row">
+                <div class="col-sm text-center ">
+                    <label>New</label>
+                </div>
+                <div class="col-sm text-center">
+                    <label>In progress</label>
+                </div>
+                <div class="col-sm text-center">
+                    <label>Testing</label>
+                </div>
+                <div class="col-sm text-center">
+                    <label>Done</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add database</h5>
+                            <p class="card-text">create a simple database for testing new project.</p>
+                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add database</h5>
+                            <p class="card-text">create a simple database for testing new project.</p>
+                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add database</h5>
+                            <p class="card-text">create a simple database for testing new project.</p>
+                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add database</h5>
+                            <p class="card-text">create a simple database for testing new project.</p>
+                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add database</h5>
+                            <p class="card-text">create a simple database for testing new project.</p>
+                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         }
     }
 
