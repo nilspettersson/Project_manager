@@ -41,71 +41,91 @@
             int days = totalHours / 24;
             int hours = totalHours % 24;
 
-            <h3>@ViewBag.sprint["name"]</h3>
-            <h5>Time left: @days days @hours hours </h5>
-
-
-            <div class="row">
-                <div class="col-sm text-center ">
-                    <label>New</label>
-                </div>
-                <div class="col-sm text-center">
-                    <label>In progress</label>
-                </div>
-                <div class="col-sm text-center">
-                    <label>Testing</label>
-                </div>
-                <div class="col-sm text-center">
-                    <label>Done</label>
-                </div>
+            <div class="mt-2">
+                <h3>@ViewBag.sprint["name"]</h3>
+                <h5>Time left: @days days @hours hours </h5>
             </div>
+            
 
-            <div class="row">
-                <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                    <div class="card" id="task1" draggable="true" ondragstart="drag(event)">
-                        <div class="card-body">
-                            <h5 class="card-title">Add database1</h5>
-                            <p class="card-text">create a simple database for testing new project.</p>
-                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+            <div class="container-fluid shadow-sm">
+                <div class="row shadow-sm mb-2">
+                    <div class="col-sm text-center ">
+                        <label class="container-fluid">New</label>
+                    </div>
+                    <div class="col-sm text-center">
+                        <label class="container-fluid">In progress</label>
+                    </div>
+                    <div class="col-sm text-center">
+                        <label class="container-fluid">Testing</label>
+                    </div>
+                    <div class="col-sm text-center">
+                        <label class="container-fluid">Done</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                        <div class="card mb-3 shadow" id="task1" draggable="true" ondragstart="drag(event)">
+                            <div class="bg-success">
+                                <p class="text-light pt-2 pl-2">2020-09-12</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Add database1</h5>
+                                <p class="card-text">create a simple database for testing new project.</p>
+                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                            </div>
+                        </div>
+                        <div class="card mb-3 shadow" id="task2" draggable="true" ondragstart="drag(event)">
+                            <div class="bg-danger">
+                                <p class="text-light pt-2 pl-2">2020-09-12</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Add database2</h5>
+                                <p class="card-text">create a simple database for testing new project.</p>
+                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card" id="task2" draggable="true" ondragstart="drag(event)">
-                        <div class="card-body">
-                            <h5 class="card-title">Add database2</h5>
-                            <p class="card-text">create a simple database for testing new project.</p>
-                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                        <div class="card mb-3 shadow" id="task3" draggable="true" ondragstart="drag(event)">
+                            <div class="bg-primary">
+                                <p class="text-light pt-2 pl-2">2020-09-12</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Add database3</h5>
+                                <p class="card-text">create a simple database for testing new project.</p>
+                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                        <div class="card mb-3 shadow" id="task4" draggable="true" ondragstart="drag(event)">
+                            <div class="bg-success">
+                                <p class="text-light pt-2 pl-2">2020-09-12</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Add database4</h5>
+                                <p class="card-text">create a simple database for testing new project.</p>
+                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                        <div class="card mb-3 shadow" id="task5" draggable="true" ondragstart="drag(event)">
+                            <div class="bg-danger">
+                                <p class="text-light pt-2 pl-2">2020-09-12</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Add database5</h5>
+                                <p class="card-text">create a simple database for testing new project.</p>
+                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm"  ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                    <div class="card" id="task3" draggable="true" ondragstart="drag(event)">
-                        <div class="card-body">
-                            <h5 class="card-title">Add database3</h5>
-                            <p class="card-text">create a simple database for testing new project.</p>
-                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                    <div class="card" id="task4" draggable="true" ondragstart="drag(event)">
-                        <div class="card-body">
-                            <h5 class="card-title">Add database4</h5>
-                            <p class="card-text">create a simple database for testing new project.</p>
-                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                    <div class="card" id="task5" draggable="true" ondragstart="drag(event)">
-                        <div class="card-body">
-                            <h5 class="card-title">Add database5</h5>
-                            <p class="card-text">create a simple database for testing new project.</p>
-                            <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-
+            
 
         }
     }
