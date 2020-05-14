@@ -32,6 +32,15 @@
         else
         {
 
+            DateTime end_time = ((DateTime)ViewBag.sprint["end_time"]);
+            DateTime CurrentTime = DateTime.Now;
+
+            int totalHours = (int)end_time.Subtract(CurrentTime).TotalHours;
+            int days = totalHours / 24;
+            int hours = totalHours % 24;
+
+            <h3>@ViewBag.sprint["name"]</h3>
+            <h5>Time left: @days days @hours hours </h5>
         }
     }
 

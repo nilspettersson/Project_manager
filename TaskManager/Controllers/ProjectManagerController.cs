@@ -75,7 +75,6 @@ namespace TaskManager.Controllers
                 {
                     //finding the last created sprint.
                     DataRow[] rows = Dao.Account.getCurrentSprint(project);
-
                     //checks if the project has any sprints.
                     if (rows.Length == 0)
                     {
@@ -84,7 +83,7 @@ namespace TaskManager.Controllers
                     else
                     {
                         ViewBag.sprintExists = true;
-                        //sprintEndTime = row
+                        ViewBag.sprint = rows[0];
 
 
                     }
