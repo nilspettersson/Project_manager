@@ -1,8 +1,10 @@
 ﻿$(function () {
 
+    var url = "https://localhost:44373/ProjectManager/"
+
     $("#project_create").click(function () {
         $.ajax({
-            url: "https://localhost:44373/ProjectManager/CreateProject",
+            url: url + "CreateProject",
             type: "POST",
             data: {
                 name: $("#name").val(),
@@ -19,7 +21,7 @@
     $("#sprint_create").click(function () {
 
         $.ajax({
-            url: "https://localhost:44373/ProjectManager/CreateSprint",
+            url: url + "CreateSprint",
             type: "POST",
             data: {
                 name: $("#sprint_name").val(),

@@ -33,6 +33,7 @@
         }
         else
         {
+            @Html.Partial("_CreateTask");
 
             DateTime end_time = ((DateTime)ViewBag.sprint["end_time"]);
             DateTime CurrentTime = DateTime.Now;
@@ -52,7 +53,7 @@
                     <a class="nav-link active" href="#">Filters</a>
                 </li>
                 <li class="nav-item">
-                    <button id="new_task" class="btn btn-outline-success " data-toggle="modal" data-target="#sprint_modal">new task</button>
+                    <button id="new_task" class="btn btn-outline-success " data-toggle="modal" data-target="#task_modal">new task</button>
                 </li>
             </ul>
 
