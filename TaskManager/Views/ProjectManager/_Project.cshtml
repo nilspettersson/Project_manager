@@ -3,10 +3,10 @@
 <div class="container pt-4">
 
     <!--menu start-->
-    @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn btn-secondary mr-3" })
-    @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn btn-secondary mr-3" })
-    @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn btn-secondary mr-3" })
-    @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn btn-secondary mr-3" })
+    @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn btn-outline-primary mr-3" })
+    @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn btn-outline-primary mr-3" })
+    @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn btn-outline-primary mr-3" })
+    @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn btn-outline-primary mr-3" })
     <!--menu end-->
 
     @if (ViewBag.type == "overview")
@@ -43,9 +43,19 @@
 
             <div class="mt-2">
                 <h3>@ViewBag.sprint["name"]</h3>
-                <h5>Time left: @days days @hours hours </h5>
+                <a>Time left: @days days @hours hours </a>
             </div>
-            
+
+
+            <ul class="nav mt-2 mb-2">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Filters</a>
+                </li>
+                <li class="nav-item">
+                    <button id="new_task" class="btn btn-outline-success " data-toggle="modal" data-target="#sprint_modal">new task</button>
+                </li>
+            </ul>
+
 
             <div class="container-fluid shadow-sm">
                 <div class="row shadow-sm mb-2">
@@ -125,7 +135,7 @@
                 </div>
 
             </div>
-            
+
 
         }
     }
