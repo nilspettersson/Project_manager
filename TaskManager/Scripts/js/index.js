@@ -37,6 +37,24 @@
 
     });
 
+    $("#task_create").click(function () {
+
+        $.ajax({
+            url: url + "CreateTask",
+            type: "POST",
+            data: {
+                name: $("#task_name").val(),
+                description: $("#task_description").val(),
+                user: $("#sprint_user").val(),
+                project: $("#sprint_projectName").val()
+            },
+            success: function (result) {
+                location.reload(false);
+            }
+        });
+
+    });
+
 
 
 });

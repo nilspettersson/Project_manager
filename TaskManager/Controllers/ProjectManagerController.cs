@@ -125,5 +125,18 @@ namespace TaskManager.Controllers
             return Content("");
         }
 
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateTask(string name, string description, string user, string project)
+        {
+
+            System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name );
+
+            string userId = Dao.Account.getUserIdByName(user);
+            string projectId = Dao.Account.getProjectId(userId, project);
+            //Dao.Account.createSprint(projectId, name, start_time, end_time);
+            return Content("");
+        }
+
     }
 }
