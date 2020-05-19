@@ -130,7 +130,9 @@ namespace TaskManager.Controllers
         public ActionResult CreateTask(string name, string description, string user, string project)
         {
 
-            System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name );
+            string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+
+            System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name + "role: " + role );
 
             string userId = Dao.Account.getUserIdByName(user);
             string projectId = Dao.Account.getProjectId(userId, project);

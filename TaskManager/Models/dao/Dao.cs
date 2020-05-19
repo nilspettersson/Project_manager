@@ -58,6 +58,7 @@ namespace TaskManager.Models
                 }
                 return row[0][0].ToString();
             }
+
             public static string getUserIdByName(string userName)
             {
                 var row = Dao.Execute("select auth_id from account where username = '" + userName + "'");
@@ -92,6 +93,15 @@ namespace TaskManager.Models
                     " where account.username = '" + username + "'");
             }
 
+            public static string getRole(string userId, string projectName)
+            {
+                var row = Dao.Execute("select role_id from user_project_role inner join project on user_project_role.project_id = project.id where user_id = '" + userId + "' and project.name = '"+projectName+"'");
+                if (row.Length == 0)
+                {
+                    return null;
+                }
+                return row[0][0].ToString();
+            }
 
             public static bool usernameExists(string username)
             {
