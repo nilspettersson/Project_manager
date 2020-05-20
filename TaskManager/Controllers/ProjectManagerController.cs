@@ -7,6 +7,7 @@ using TaskManager.Models;
 using Microsoft.AspNet.Identity;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Web.Script.Serialization;
 
 namespace TaskManager.Controllers
 {
@@ -117,12 +118,22 @@ namespace TaskManager.Controllers
             time = time.AddDays(Double.Parse(weeks) * 7);
             string end_time = time.ToString();
 
-            //System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name );
 
-            string userId = Dao.Account.getUserIdByName(user);
-            string projectId = Dao.Account.getProjectId(userId, project);
-            Dao.Account.createSprint(projectId, name, start_time, end_time);
-            return Content("");
+            string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+            if (role == "1")
+            {
+                string userId = Dao.Account.getUserIdByName(user);
+                string projectId = Dao.Account.getProjectId(userId, project);
+                Dao.Account.createSprint(projectId, name, start_time, end_time);
+
+                return Content("");
+            }
+            else
+            {
+                return Content("");
+            }
+            
+            
         }
 
         [Authorize]
@@ -134,8 +145,12 @@ namespace TaskManager.Controllers
 
             System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name + "role: " + role );
 
-            string userId = Dao.Account.getUserIdByName(user);
-            string projectId = Dao.Account.getProjectId(userId, project);
+            if(role == "1" || role == "2")
+            {
+                string userId = Dao.Account.getUserIdByName(user);
+                string projectId = Dao.Account.getProjectId(userId, project);
+            }
+            
             //Dao.Account.createSprint(projectId, name, start_time, end_time);
             return Content("");
         }
