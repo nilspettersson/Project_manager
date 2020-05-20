@@ -1,6 +1,8 @@
 ﻿<script src="~/Scripts/js/sprint.js"></script>
 
 <div class="container pt-4">
+    <input type="hidden" id="projectName" value="@ViewBag.projectName">
+    <input type="hidden" id="user" value="@ViewBag.userName">
 
     <!--menu start-->
     @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn btn-outline-primary mr-3" })

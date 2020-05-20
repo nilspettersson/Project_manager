@@ -20,9 +20,25 @@
                     <label for="task_description" class="2 col-form-label">Description</label>
                     <input type="text" name="task_description" class="form-control" id="task_description">
                 </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Type</label>
+                    <select class="form-control" id="task_type">
+                        <option value="1">Issue</option>
+                        <option value="2">Feature</option>
+                        <option value="3">Investigation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">difficulty</label>
+                    <select class="form-control" id="task_difficulty">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
 
-                <input type="hidden" id="sprint_projectName" value="@ViewBag.projectName">
-                <input type="hidden" id="sprint_user" value="@ViewBag.userName">
                 <input type="hidden" id="sprint_id" value="@ViewBag.sprint[0]">
 
             </div>

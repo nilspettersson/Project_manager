@@ -137,7 +137,7 @@ namespace TaskManager.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateTask(string name, string description, string user, string project, string sprint)
+        public ActionResult CreateTask(string name, string description, string type, string difficulty, string user, string project, string sprint)
         {
 
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
@@ -146,7 +146,7 @@ namespace TaskManager.Controllers
 
             if(role == "1" || role == "2")
             {
-                Dao.Account.createTask(sprint, name, description, "1", "1", "1");
+                Dao.Account.createTask(sprint, name, description, difficulty, type);
             }
             
             return Content("");

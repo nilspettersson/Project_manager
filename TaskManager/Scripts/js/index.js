@@ -27,8 +27,8 @@
                 name: $("#sprint_name").val(),
                 start_time: $("#sprint_start_time").val(),
                 weeks: $("#sprint_weeks").val(),
-                user: $("#sprint_user").val(),
-                project: $("#sprint_projectName").val()
+                user: $("#user").val(),
+                project: $("#projectName").val()
             }, 
             success: function (result) {
                 location.reload(false);
@@ -38,16 +38,17 @@
     });
 
     $("#task_create").click(function () {
-
         $.ajax({
             url: url + "CreateTask",
             type: "POST",
             data: {
                 name: $("#task_name").val(),
                 description: $("#task_description").val(),
-                user: $("#sprint_user").val(),
-                project: $("#sprint_projectName").val(),
-                sprint: $("#sprint_id").val()
+                user: $("#user").val(),
+                project: $("#projectName").val(),
+                sprint: $("#sprint_id").val(),
+                type: $("#task_type").val(),
+                difficulty: $("#task_difficulty").val()
             },
             success: function (result) {
                 location.reload(false);
