@@ -46,7 +46,8 @@
                 name: $("#task_name").val(),
                 description: $("#task_description").val(),
                 user: $("#sprint_user").val(),
-                project: $("#sprint_projectName").val()
+                project: $("#sprint_projectName").val(),
+                sprint: $("#sprint_id").val()
             },
             success: function (result) {
                 location.reload(false);

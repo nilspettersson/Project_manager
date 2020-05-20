@@ -125,14 +125,19 @@ namespace TaskManager.Models
 
             public static void createSprint(string projectId, string name, string start_time, string end_time)
             {
-                //string project_id = Dao.Execute("insert into project (name, description) values('" + projectName + "', '" + projectDescription + "');" +
-                //"SELECT SCOPE_IDENTITY();")[0][0].ToString();
-
-                //Dao.Execute("insert into user_project_role(user_id, project_id, role_id) values('" + userId + "', '" + project_id + "', 1)");
                 string sprint_id = Execute("insert into sprint(name, start_time, end_time) values('"+name+"', '"+start_time+"', '"+end_time+"'); " +
                     "select SCOPE_IDENTITY();")[0][0].ToString();
 
                 Execute("insert into project_sprint(project_id, sprint_id) values('"+projectId+ "', '"+sprint_id+"')");
+            }
+
+            public static void createTask(string sprint_id ,string name, string description, string difficulty, string type_id, string state_id)
+            {
+                string task_id = Execute("insert into task(name, description, difficulty, type_id) " +
+                    "values('" + name + "', '" + description + "', '" + difficulty + "', '" + type_id + "'); " +
+                    "select SCOPE_IDENTITY();")[0][0].ToString();
+
+                Execute("insert into task_sprint(task_id, sprint_id, state_id) values('" + task_id + "', '" + sprint_id + "', '" + state_id + "')");
             }
 
             public static string getProjectId(string user, string projectName)

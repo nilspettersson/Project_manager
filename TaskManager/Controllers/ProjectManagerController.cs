@@ -86,7 +86,6 @@ namespace TaskManager.Controllers
                         ViewBag.sprintExists = true;
                         ViewBag.sprint = rows[0];
 
-
                     }
 
                     ViewBag.type = "sprint";
@@ -138,20 +137,18 @@ namespace TaskManager.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult CreateTask(string name, string description, string user, string project)
+        public ActionResult CreateTask(string name, string description, string user, string project, string sprint)
         {
 
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
 
-            System.Diagnostics.Debug.WriteLine("******************   "+user+"  "+project+"  "+name + "role: " + role );
+            System.Diagnostics.Debug.WriteLine("******************   " + sprint );
 
             if(role == "1" || role == "2")
             {
-                string userId = Dao.Account.getUserIdByName(user);
-                string projectId = Dao.Account.getProjectId(userId, project);
+                Dao.Account.createTask(sprint, name, description, "1", "1", "1");
             }
             
-            //Dao.Account.createSprint(projectId, name, start_time, end_time);
             return Content("");
         }
 
