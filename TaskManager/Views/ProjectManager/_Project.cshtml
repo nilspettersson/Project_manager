@@ -78,62 +78,49 @@
 
                 <div class="row">
                     <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                        <div class="card mb-3 shadow" id="task1" draggable="true" ondragstart="drag(event)">
-                            <div class="bg-success">
-                                <p class="text-light pt-2 pl-2">2020-09-12</p>
-                            </div>
+
+                        @foreach (var project in ViewBag.tasks)
+                        {
+                        <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
+                            @if (project[4] == 1)
+                            {
+                                <div class="bg-danger">
+                                    <p class="text-light pt-2 pl-2">2020-09-12</p>
+                                </div>
+                            }
+                            @if (project[4] == 2)
+                            {
+                                <div class="bg-success">
+                                    <p class="text-light pt-2 pl-2">2020-09-12</p>
+                                </div>
+                            }
+                            @if (project[4] == 3)
+                            {
+                                <div class="bg-primary">
+                                    <p class="text-light pt-2 pl-2">2020-09-12</p>
+                                </div>
+                            }
+
+
+
                             <div class="card-body">
-                                <h5 class="card-title">Add database1</h5>
-                                <p class="card-text">create a simple database for testing new project.</p>
+                                <h5 class="card-title">@project[1]</h5>
+                                <p class="card-text">@project[2]</p>
                                 <a href="#" class="btn btn-outline-primary float-right">Edit</a>
                             </div>
                         </div>
-                        <div class="card mb-3 shadow" id="task2" draggable="true" ondragstart="drag(event)">
-                            <div class="bg-danger">
-                                <p class="text-light pt-2 pl-2">2020-09-12</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Add database2</h5>
-                                <p class="card-text">create a simple database for testing new project.</p>
-                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                            </div>
-                        </div>
+                        }
+
+
                     </div>
                     <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                        <div class="card mb-3 shadow" id="task3" draggable="true" ondragstart="drag(event)">
-                            <div class="bg-primary">
-                                <p class="text-light pt-2 pl-2">2020-09-12</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Add database3</h5>
-                                <p class="card-text">create a simple database for testing new project.</p>
-                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                        <div class="card mb-3 shadow" id="task4" draggable="true" ondragstart="drag(event)">
-                            <div class="bg-success">
-                                <p class="text-light pt-2 pl-2">2020-09-12</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Add database4</h5>
-                                <p class="card-text">create a simple database for testing new project.</p>
-                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                        <div class="card mb-3 shadow" id="task5" draggable="true" ondragstart="drag(event)">
-                            <div class="bg-danger">
-                                <p class="text-light pt-2 pl-2">2020-09-12</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Add database5</h5>
-                                <p class="card-text">create a simple database for testing new project.</p>
-                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 

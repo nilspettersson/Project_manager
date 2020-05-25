@@ -142,10 +142,11 @@ namespace TaskManager.Models
 
             public static DataRow[] getTasks(string sprint_id)
             {
-                DataRow[] rows = Execute("select * from task inner join task_sprint on task.id = task_sprint.task_id " +
+                DataRow[] rows = Execute("select task.id, task.name, task.description, task.difficulty, task.type_id, task_sprint.state_id from task " +
+                    "inner join task_sprint on task.id = task_sprint.task_id " +
                     "where task_sprint.sprint_id = '" + sprint_id + "'");
 
-                return null;
+                return rows;
             }
 
             public static string getProjectId(string user, string projectName)

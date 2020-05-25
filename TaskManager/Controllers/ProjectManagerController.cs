@@ -88,7 +88,9 @@ namespace TaskManager.Controllers
                         ViewBag.sprint = rows[0];
 
                         string sprintId = rows[0][0].ToString();
-                        ViewBag.tasks = Dao.Account.getTasks(sprintId);
+
+                        DataRow[] tasks = Dao.Account.getTasks(sprintId);
+                        ViewBag.tasks = tasks;
 
                     }
 
