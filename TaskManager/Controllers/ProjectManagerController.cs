@@ -71,7 +71,7 @@ namespace TaskManager.Controllers
                     }
                     ViewBag.type = "overview";
                 }
-                //sprint
+                //sprint. shows the current sprint.
                 else if(type == "sprint")
                 {
                     //finding the last created sprint.
@@ -79,12 +79,16 @@ namespace TaskManager.Controllers
                     //checks if the project has any sprints.
                     if (rows.Length == 0)
                     {
+                        //html will show button to create a sprint.
                         ViewBag.sprintExists = false;
                     }
                     else
                     {
                         ViewBag.sprintExists = true;
                         ViewBag.sprint = rows[0];
+
+                        string sprintId = rows[0][0].ToString();
+                        ViewBag.tasks = Dao.Account.getTasks(sprintId);
 
                     }
 
@@ -132,23 +136,18 @@ namespace TaskManager.Controllers
                 return Content("");
             }
             
-            
         }
 
         [Authorize]
         [HttpPost]
         public ActionResult CreateTask(string name, string description, string type, string difficulty, string user, string project, string sprint)
         {
-
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
-
-            System.Diagnostics.Debug.WriteLine("******************   " + sprint );
 
             if(role == "1" || role == "2")
             {
                 Dao.Account.createTask(sprint, name, description, difficulty, type);
             }
-            
             return Content("");
         }
 

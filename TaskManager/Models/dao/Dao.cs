@@ -140,6 +140,14 @@ namespace TaskManager.Models
                 Execute("insert into task_sprint(task_id, sprint_id, state_id) values('" + task_id + "', '" + sprint_id + "', '1')");
             }
 
+            public static DataRow[] getTasks(string sprint_id)
+            {
+                DataRow[] rows = Execute("select * from task inner join task_sprint on task.id = task_sprint.task_id " +
+                    "where task_sprint.sprint_id = '" + sprint_id + "'");
+
+                return null;
+            }
+
             public static string getProjectId(string user, string projectName)
             {
                 DataRow[] row = Execute("select project_id from user_project_role inner join project on user_project_role.project_id = project.id " +
