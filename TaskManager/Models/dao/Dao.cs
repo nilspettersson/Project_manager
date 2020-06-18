@@ -116,10 +116,12 @@ namespace TaskManager.Models
             public static DataRow[] getCurrentSprint(string projectName)
             {
                 string currentTime = DateTime.Now.ToString();
-
+                
                 DataRow[] rows = Execute("select * from sprint inner join project_sprint on project_sprint.id = sprint.id " +
                     "inner join project on project_sprint.project_id = project.id " +
                     "where project.name = " + "'"+projectName+"' and '"+currentTime+ "' between sprint.start_time and sprint.end_time");
+
+                
                 return rows;
             }
 

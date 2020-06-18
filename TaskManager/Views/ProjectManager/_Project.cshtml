@@ -1,5 +1,6 @@
 ﻿@{ 
     int i = 1;
+    DateTime currentTime = DateTime.Now;
 }
 
 <script src="~/Scripts/js/sprint.js"></script>
@@ -28,18 +29,28 @@
                     <th scope="col">Title</th>
                     <th scope="col">Start</th>
                     <th scope="col">End</th>
+                    <th scope="col">status</th>
                 </tr>
             </thead>
             <tbody>
                 
                 @foreach (var sprint in ViewBag.sprints)
                 {
-                    <tr>
-                        <th scope="row">@i</th>
-                        <td>@sprint[3]</td>
-                        <td>@sprint[1]</td>
-                        <td>@sprint[2]</td>
-                    </tr>
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@sprint[3]</td>
+                    <td>@sprint[1]</td>
+                    <td>@sprint[2]</td>
+                    @((DateTime)sprint[1]).Millisecond
+                    @if (currentTime.Subtract(((DateTime)sprint[1])).TotalSeconds < 0)
+                    {
+                        <td>not Done</td>
+                    }
+                    else
+                    {
+                        <td>Done</td>
+                    }
+                </tr>
                     i++;
                 }
             </tbody>
