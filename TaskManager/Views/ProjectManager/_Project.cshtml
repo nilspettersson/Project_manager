@@ -41,10 +41,9 @@
                     <td>@sprint[3]</td>
                     <td>@sprint[1]</td>
                     <td>@sprint[2]</td>
-                    @((DateTime)sprint[1]).Millisecond
                     @if (currentTime.Subtract(((DateTime)sprint[1])).TotalSeconds < 0)
                     {
-                        <td>not Done</td>
+                        <td>Not done</td>
                     }
                     else
                     {

@@ -130,7 +130,7 @@ namespace TaskManager.Models
 
                 DataRow[] rows = Execute("select * from sprint inner join project_sprint on project_sprint.id = sprint.id " +
                     "inner join project on project_sprint.project_id = project.id " +
-                    "where project.name = " + "'" + projectName + "'");
+                    "where project.name = " + "'" + projectName + "' order by sprint.start_time desc");
                 return rows;
             }
 
