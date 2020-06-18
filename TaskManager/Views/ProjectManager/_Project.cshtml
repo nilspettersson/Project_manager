@@ -1,4 +1,8 @@
-﻿<script src="~/Scripts/js/sprint.js"></script>
+﻿@{ 
+    int i = 1;
+}
+
+<script src="~/Scripts/js/sprint.js"></script>
 
 <div class="container pt-4">
     <input type="hidden" id="projectName" value="@ViewBag.projectName">
@@ -16,6 +20,33 @@
         <div class="mt-4">
             <h2>@ViewBag.projectName</h2>
         </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sprint</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">End</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var sprint in ViewBag.sprints)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@sprint[3]</td>
+                        <td>@sprint[1]</td>
+                        <td>@sprint[2]</td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+
+        
+
     }
     else if (ViewBag.type == "sprint")
     {
@@ -81,34 +112,34 @@
 
                         @foreach (var project in ViewBag.tasks)
                         {
-                        <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
-                            @if (project[4] == 1)
-                            {
-                                <div class="bg-danger">
-                                    <p class="text-light pt-2 pl-2">2020-09-12</p>
-                                </div>
-                            }
-                            @if (project[4] == 2)
-                            {
-                                <div class="bg-success">
-                                    <p class="text-light pt-2 pl-2">2020-09-12</p>
-                                </div>
-                            }
-                            @if (project[4] == 3)
-                            {
-                                <div class="bg-primary">
-                                    <p class="text-light pt-2 pl-2">2020-09-12</p>
-                                </div>
-                            }
+                            <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
+                                @if (project[4] == 1)
+                                {
+                                    <div class="bg-danger">
+                                        <p class="text-light pt-2 pl-2">2020-09-12</p>
+                                    </div>
+                                }
+                                @if (project[4] == 2)
+                                {
+                                    <div class="bg-success">
+                                        <p class="text-light pt-2 pl-2">2020-09-12</p>
+                                    </div>
+                                }
+                                @if (project[4] == 3)
+                                {
+                                    <div class="bg-primary">
+                                        <p class="text-light pt-2 pl-2">2020-09-12</p>
+                                    </div>
+                                }
 
 
 
-                            <div class="card-body">
-                                <h5 class="card-title">@project[1]</h5>
-                                <p class="card-text">@project[2]</p>
-                                <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                                <div class="card-body">
+                                    <h5 class="card-title">@project[1]</h5>
+                                    <p class="card-text">@project[2]</p>
+                                    <a href="#" class="btn btn-outline-primary float-right">Edit</a>
+                                </div>
                             </div>
-                        </div>
                         }
 
 
@@ -117,10 +148,10 @@
 
                     </div>
                     <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                        
+
                     </div>
                     <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
-                        
+
                     </div>
                 </div>
 

@@ -68,6 +68,10 @@ namespace TaskManager.Controllers
                         {
                             
                         }
+
+                        DataRow[] sprints = Dao.Account.getAllSprints(project);
+                        ViewBag.sprints = sprints;
+
                     }
                     ViewBag.type = "overview";
                 }

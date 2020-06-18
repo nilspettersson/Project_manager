@@ -123,6 +123,15 @@ namespace TaskManager.Models
                 return rows;
             }
 
+            public static DataRow[] getAllSprints(string projectName)
+            {
+
+                DataRow[] rows = Execute("select * from sprint inner join project_sprint on project_sprint.id = sprint.id " +
+                    "inner join project on project_sprint.project_id = project.id " +
+                    "where project.name = " + "'" + projectName + "'");
+                return rows;
+            }
+
             public static void createSprint(string projectId, string name, string start_time, string end_time)
             {
                 string sprint_id = Execute("insert into sprint(name, start_time, end_time) values('"+name+"', '"+start_time+"', '"+end_time+"'); " +
