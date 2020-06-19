@@ -151,7 +151,7 @@ namespace TaskManager.Controllers
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
             if (role == "1")
             {
-                Dao.Account.createSprint(projectId, name, start_time, end_time);
+                Dao.Account.removeSprint(sprint);
 
                 return Content("");
             }

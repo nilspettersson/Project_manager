@@ -142,6 +142,13 @@ namespace TaskManager.Models
                 Execute("insert into project_sprint(project_id, sprint_id) values('"+projectId+ "', '"+sprint_id+"')");
             }
 
+            public static DataRow[] removeSprint(string sprint)
+            {
+
+                DataRow[] rows = Execute("delete from sprint where id = '"+sprint+"' ");
+                return rows;
+            }
+
             public static void createTask(string sprint_id ,string name, string description, string difficulty, string type_id)
             {
                 string task_id = Execute("insert into task(name, description, difficulty, type_id) " +
