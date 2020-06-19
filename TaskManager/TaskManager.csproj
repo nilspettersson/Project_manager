@@ -358,6 +358,7 @@
     <Content Include="Views\ProjectManager\_Project.cshtml" />
     <Content Include="Views\Shared\_CreateSprint.cshtml" />
     <Content Include="Views\Shared\_CreateTask.cshtml" />
+    <Content Include="Views\Shared\_RemoveSprint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

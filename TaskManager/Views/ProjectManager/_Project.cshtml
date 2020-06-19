@@ -18,6 +18,8 @@
 
     @if (ViewBag.type == "overview")
     {
+        
+
         <div class="mt-4">
             <h2>@ViewBag.projectName</h2>
         </div>
@@ -30,6 +32,7 @@
                     <th scope="col">Start</th>
                     <th scope="col">End</th>
                     <th scope="col">status</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +44,7 @@
                     <td>@sprint[3]</td>
                     <td>@sprint[1]</td>
                     <td>@sprint[2]</td>
-                    @if (currentTime.Subtract(((DateTime)sprint[1])).TotalSeconds < 0)
+                    @if (currentTime.Subtract(((DateTime)sprint[2])).TotalSeconds < 0)
                     {
                         <td>Not done</td>
                     }
@@ -49,6 +52,9 @@
                     {
                         <td>Done</td>
                     }
+
+                    @Html.Partial("_RemoveSprint");
+                    <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
                 </tr>
                     i++;
                 }

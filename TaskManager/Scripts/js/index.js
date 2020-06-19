@@ -36,6 +36,22 @@
         });
 
     });
+    $("#sprint_remove").click(function () {
+
+        $.ajax({
+            url: url + "CreateSprint",
+            type: "POST",
+            data: {
+                sprint: $("#sprint_id").val()
+            },
+            success: function (result) {
+                location.reload(false);
+            }
+        });
+
+    });
+
+
 
     $("#task_create").click(function () {
         $.ajax({
@@ -60,3 +76,7 @@
 
 
 });
+
+function setSprintId(btn) {
+    $("#sprint_id").val(btn.value);
+}
