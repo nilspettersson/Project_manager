@@ -39,10 +39,11 @@
     $("#sprint_remove").click(function () {
 
         $.ajax({
-            url: url + "CreateSprint",
+            url: url + "RemoveSprint",
             type: "POST",
             data: {
-                sprint: $("#sprint_id").val()
+                sprint: $("#sprint_id").val(),
+                project: $("#projectName").val()
             },
             success: function (result) {
                 location.reload(false);

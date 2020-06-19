@@ -146,6 +146,24 @@ namespace TaskManager.Controllers
 
         [Authorize]
         [HttpPost]
+        public ActionResult RemoveSprint(string sprint, string project)
+        {
+            string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+            if (role == "1")
+            {
+                Dao.Account.createSprint(projectId, name, start_time, end_time);
+
+                return Content("");
+            }
+            else
+            {
+                return Content("");
+            }
+
+        }
+
+        [Authorize]
+        [HttpPost]
         public ActionResult CreateTask(string name, string description, string type, string difficulty, string user, string project, string sprint)
         {
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
