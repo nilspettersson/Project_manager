@@ -161,7 +161,7 @@ namespace TaskManager.Models
 
             public static DataRow[] getTasks(string sprint_id)
             {
-                DataRow[] rows = Execute("select task.id, task.name, task.description, task.difficulty, task.type_id, task_sprint.state_id from task " +
+                DataRow[] rows = Execute("select task.id, task.name, task.description, task.difficulty, task.type_id, task_sprint.state_id, task.created_date from task " +
                     "inner join task_sprint on task.id = task_sprint.task_id " +
                     "where task_sprint.sprint_id = '" + sprint_id + "'");
 
