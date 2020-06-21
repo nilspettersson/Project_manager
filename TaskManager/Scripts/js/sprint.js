@@ -12,18 +12,16 @@ function drop(ev, el) {
     el.appendChild(document.getElementById(data));
 
     var state = el.id;
-    var task = ev.id;
-
     $.ajax({
         url: url + "UpdateTaskState",
         type: "POST",
         data: {
-            task: task,
+            task: ev.dataTransfer.getData("text"),
             state: state,
             project: $("#projectName").val(),
         },
         success: function (result) {
-            location.reload(false);
+            
         }
     });
 }

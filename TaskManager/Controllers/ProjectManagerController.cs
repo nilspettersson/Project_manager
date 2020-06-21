@@ -183,7 +183,7 @@ namespace TaskManager.Controllers
 
             if (role == "1" || role == "2")
             {
-                //Dao.Account.setTaskState(task, state);
+                Dao.Account.setTaskState(task, state);
             }
             return Content("");
         }

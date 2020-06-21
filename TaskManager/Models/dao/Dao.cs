@@ -168,6 +168,11 @@ namespace TaskManager.Models
                 return rows;
             }
 
+            public static void setTaskState(string task, string state)
+            {
+                Execute("update task_sprint set state_id = '" + state + "' where task_id = " + task);
+            }
+
             public static string getProjectId(string user, string projectName)
             {
                 DataRow[] row = Execute("select project_id from user_project_role inner join project on user_project_role.project_id = project.id " +
