@@ -149,10 +149,11 @@ namespace TaskManager.Models
                 return rows;
             }
 
+            //created_date
             public static void createTask(string sprint_id ,string name, string description, string difficulty, string type_id)
             {
-                string task_id = Execute("insert into task(name, description, difficulty, type_id) " +
-                    "values('" + name + "', '" + description + "', '" + difficulty + "', '" + type_id + "'); " +
+                string task_id = Execute("insert into task(name, description, difficulty, type_id, created_date) " +
+                    "values('" + name + "', '" + description + "', '" + difficulty + "', '" + type_id + "',  GETDATE()); " +
                     "select SCOPE_IDENTITY();")[0][0].ToString();
 
                 Execute("insert into task_sprint(task_id, sprint_id, state_id) values('" + task_id + "', '" + sprint_id + "', '1')");
