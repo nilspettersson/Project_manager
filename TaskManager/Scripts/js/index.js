@@ -1,6 +1,7 @@
-﻿$(function () {
+﻿var url = "https://localhost:44373/ProjectManager/";
+$(function () {
 
-    var url = "https://localhost:44373/ProjectManager/"
+    
 
     $("#project_create").click(function () {
         $.ajax({

@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                    <div id="1" class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
 
                         @foreach (var project in ViewBag.tasks)
                         {
@@ -132,7 +132,7 @@
                             {
                                 continue;
                             }
-                            <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
+                            <div class="card mb-3 shadow" id="@project[0]" draggable="true" ondragstart="drag(event)">
                                 @if (project[4] == 1)
                                 {
                                     string time = ((DateTime)project[6]).ToString().Substring(0, 11);
@@ -166,7 +166,7 @@
 
 
                     </div>
-                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                    <div id="2" class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
 
                         @foreach (var project in ViewBag.tasks)
                         {
@@ -174,7 +174,7 @@
                             {
                                 continue;
                             }
-                            <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
+                            <div class="card mb-3 shadow" id="@project[0]" draggable="true" ondragstart="drag(event)">
                                 @if (project[4] == 1)
                                 {
                                     string time = ((DateTime)project[6]).ToString().Substring(0, 11);
@@ -208,7 +208,7 @@
                         }
 
                     </div>
-                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                    <div id="3" class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
 
                         @foreach (var project in ViewBag.tasks)
                         {
@@ -216,7 +216,7 @@
                             {
                                 continue;
                             }
-                            <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
+                            <div class="card mb-3 shadow" id="@project[0]" draggable="true" ondragstart="drag(event)">
                                 @if (project[4] == 1)
                                 {
                                     string time = ((DateTime)project[6]).ToString().Substring(0, 11);
@@ -250,7 +250,7 @@
                         }
 
                     </div>
-                    <div class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+                    <div id="4" class="col-sm" ondrop="drop(event, this)" ondragover="allowDrop(event)">
 
                         @foreach (var project in ViewBag.tasks)
                         {
@@ -258,7 +258,7 @@
                             {
                                 continue;
                             }
-                            <div class="card mb-3 shadow" id="task_@project[0]" draggable="true" ondragstart="drag(event)">
+                            <div class="card mb-3 shadow" id="@project[0]" draggable="true" ondragstart="drag(event)">
                                 @if (project[4] == 1)
                                 {
                                     string time = ((DateTime)project[6]).ToString().Substring(0, 11);

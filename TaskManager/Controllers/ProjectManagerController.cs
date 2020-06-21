@@ -175,5 +175,20 @@ namespace TaskManager.Controllers
             return Content("");
         }
 
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateTaskState(string task, string state, string project)
+        {
+            string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+
+            if (role == "1" || role == "2")
+            {
+                //Dao.Account.setTaskState(task, state);
+            }
+            return Content("");
+        }
+
+        
+
     }
 }
