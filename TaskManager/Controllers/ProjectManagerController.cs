@@ -21,7 +21,7 @@ namespace TaskManager.Controllers
                 ViewBag.username = Dao.Account.getUsername(User.Identity.GetUserId());
             }
 
-            ViewBag.projects = Dao.Projects.getAllProjects();
+            //ViewBag.projects = Dao.Projects.getAllProjects();
             return View();
         }
         public ActionResult Users(string user, string project, string type)

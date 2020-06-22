@@ -12,7 +12,6 @@
     <!--menu start-->
     @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn btn-outline-primary mr-3" })
     @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn btn-outline-primary mr-3" })
-    @Html.ActionLink("backlog", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "backlog" }, new { @class = "btn btn btn-outline-primary mr-3" })
     @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn btn-outline-primary mr-3" })
     <!--menu end-->
 

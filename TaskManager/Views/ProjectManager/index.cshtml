@@ -6,56 +6,12 @@
 
 <script src="~/Scripts/js/index.js"></script>
 
-    @Html.Partial("_CreateProject")
-
-
-<div class="container pt-5">
-
-    <!--menu start-->
-    <button id="new" class="btn btn-outline-success mr-3" data-toggle="modal" data-target="#modal">new project</button>
-
-    <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            all projects
-        </button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" href="#">all projects</a>
-            <a class="dropdown-item" href="#">your projects</a>
-        </div>
-    </div>
-
-
-    <form class="form-inline my-2 my-lg-0 float-sm-right">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button id="btnGroupDrop1" type="button" class="btn btn-secondary">
-            search
-        </button>
-    </form>
-
-    <!--menu end-->
-
-    @foreach (var project in ViewBag.projects)
-    {
-        <div class="card w-auto mt-2">
-            <div class="card-body">
-                <a href="https://localhost:44373/ProjectManager/users/@project["username"]/@project["name"]" id="@project["name"]" class="btn btn-outline-primary float-right projects">
-                    go to project
-                </a>
-
-                <h4 class="card-title">@project["name"]</h4>
-
-
-                <button class="btn btn-link text-primary pt-3" type="button" data-toggle="collapse" data-target="#desc_@project["id"]" aria-expanded="false" aria-controls="collapseExample">
-                    show description
-                </button>
-
-                <div class="collapse" id="desc_@project["id"]">
-                    <p class="card-text">@project["description"]</p>
-                </div>
-
-            </div>
-        </div>
-    }
-
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <h1 class="p-5">Welcome @ViewBag.username</h1>
+}
+else
+{
+    <h1 class="p-5">You need to login</h1>
+}
 
