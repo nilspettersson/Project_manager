@@ -17,11 +17,15 @@
 
     @if (ViewBag.type == "overview")
     {
-        
+
 
         <div class="mt-4">
             <h2>@ViewBag.projectName</h2>
         </div>
+
+        @Html.Partial("_CreateSprint")
+
+        <button id="new_sprint" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#sprint_modal">new sprint</button>
 
         <table class="table">
             <thead>
@@ -35,32 +39,32 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach (var sprint in ViewBag.sprints)
                 {
-                <tr>
-                    <th scope="row">@i</th>
-                    <td>@sprint[3]</td>
-                    <td>@sprint[1]</td>
-                    <td>@sprint[2]</td>
-                    @if (currentTime.Subtract(((DateTime)sprint[2])).TotalSeconds < 0)
-                    {
-                        <td>Not done</td>
-                    }
-                    else
-                    {
-                        <td>Done</td>
-                    }
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@sprint[3]</td>
+                        <td>@sprint[1]</td>
+                        <td>@sprint[2]</td>
+                        @if (currentTime.Subtract(((DateTime)sprint[2])).TotalSeconds < 0)
+                        {
+                            <td>Not done</td>
+                        }
+                        else
+                        {
+                            <td>Done</td>
+                        }
 
-                    @Html.Partial("_RemoveSprint");
-                    <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
-                </tr>
+                        @Html.Partial("_RemoveSprint")
+                        <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
+                    </tr>
                     i++;
                 }
             </tbody>
         </table>
 
-        
+
 
     }
     else if (ViewBag.type == "sprint")
@@ -127,7 +131,7 @@
 
                         @foreach (var project in ViewBag.tasks)
                         {
-                            if(project[5] != 1)
+                            if (project[5] != 1)
                             {
                                 continue;
                             }
