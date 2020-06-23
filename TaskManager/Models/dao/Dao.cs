@@ -85,6 +85,16 @@ namespace TaskManager.Models
                 Dao.Execute("insert into user_project_role(user_id, project_id, role_id) values('" + user_id + "', '" + project_id + "', " + user_role + ")");
             }
 
+            public static Boolean UserIsInProject(string user_id, string projectId)
+            {
+                var result = Execute("select id from user_project_role where user_id = '" + user_id + "' and project_id = '" + projectId + "'");
+                if (result.Length == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+
             public static void createProject(string userId, string projectName, string projectDescription)
             {
                 string project_id = Dao.Execute("insert into project (name, description) values('" + projectName + "', '" + projectDescription + "');" +

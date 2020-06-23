@@ -205,15 +205,29 @@ namespace TaskManager.Controllers
         public ActionResult AddUser(string name, string user_role, string user, string project)
         {
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
-            Debug.WriteLine(name+"  "+user_role);
+            
             if (role == "1")
             {
                 //user_id is the owner.
                 string user_id = Dao.Account.getUserIdByName(user);
                 string projectId = Dao.Account.getProjectId(user_id, project);
 
+                //id of the user that will be added
                 string userId = Dao.Account.getUserIdByName(name);
-                Dao.Account.addUserToProject(userId, user_role, projectId);
+                if(userId == null)
+                {
+                    return Content("");
+                }
+                else if(Dao.Account.UserIsInProject(userId, projectId))
+                {
+                    return Content("");
+                }
+                else
+                {
+                    Dao.Account.addUserToProject(userId, user_role, projectId);
+                }
+
+                
             }
             return Content("");
         }
