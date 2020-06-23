@@ -103,6 +103,10 @@ namespace TaskManager.Controllers
                 //users. shows users for the project.
                 else if (type == "users")
                 {
+                    String user_id = Dao.Account.getUserIdByName(user);
+                    String project_id = Dao.Account.getProjectId(user_id, project);
+                    DataRow[] users = Dao.Account.getUsers(project_id);
+                    ViewBag.users = users;
 
                     ViewBag.type = "users";
                 }

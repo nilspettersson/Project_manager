@@ -1,5 +1,6 @@
 ﻿@{ 
     int i = 1;
+    int j = 1;
     DateTime currentTime = DateTime.Now;
 }
 
@@ -306,7 +307,28 @@
 
     else if (ViewBag.type == "users")
     {
-        <h1>users</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var user in ViewBag.users)
+                {
+                <tr>
+                    <td>@j</td>
+                    <td>@user[0]</td>
+                </tr>
+                    j++;
+                }
+            </tbody>
+        </table>
+
     }
 
 

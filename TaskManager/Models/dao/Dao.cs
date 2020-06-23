@@ -69,6 +69,17 @@ namespace TaskManager.Models
                 return row[0][0].ToString();
             }
 
+            public static DataRow[] getUsers(string project_id)
+            {
+                var row = Dao.Execute("select username from account inner join user_project_role on user_project_role.user_id = account.auth_id" +
+                    " where user_project_role.project_id = '" + project_id + "'");
+                if (row.Length == 0)
+                {
+                    return null;
+                }
+                return row;
+            }
+
             public static void createProject(string userId, string projectName, string projectDescription)
             {
                 string project_id = Dao.Execute("insert into project (name, description) values('" + projectName + "', '" + projectDescription + "');" +
