@@ -75,6 +75,24 @@ $(function () {
 
     });
 
+    $("#user_create").click(function () {
+
+        $.ajax({
+            url: url + "AddUser",
+            type: "POST",
+            data: {
+                name: $("#user_name").val(),
+                user_role: $("#user_role").val(),
+                user: $("#user").val(),
+                project: $("#projectName").val()
+            },
+            success: function (result) {
+                location.reload(false);
+            }
+        });
+
+    });
+
 
 
 });

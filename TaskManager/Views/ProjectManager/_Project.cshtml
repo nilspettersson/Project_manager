@@ -308,6 +308,10 @@
     else if (ViewBag.type == "users")
     {
 
+        @Html.Partial("_AddUser")
+
+        <button id="new_User" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#user_modal">Add user</button>
+
         <table class="table">
             <thead>
                 <tr>
@@ -320,23 +324,23 @@
 
                 @foreach (var user in ViewBag.users)
                 {
-                <tr>
-                    <td>@j</td>
-                    <td>@user[0]</td>
-                    @if (@user[1] == 1)
-                    {
-                        <td>Owner</td>
-                    }
-                    else if (@user[1] == 2)
-                    {
-                        <td>Manager</td>
-                    }
-                    else if (@user[1] == 3)
-                    {
-                        <td>Developer</td>
-                    }
+                    <tr>
+                        <td>@j</td>
+                        <td>@user[0]</td>
+                        @if (@user[1] == 1)
+                        {
+                            <td>Owner</td>
+                        }
+                        else if (@user[1] == 2)
+                        {
+                            <td>Manager</td>
+                        }
+                        else if (@user[1] == 3)
+                        {
+                            <td>Developer</td>
+                        }
 
-                </tr>
+                    </tr>
                     j++;
                 }
             </tbody>

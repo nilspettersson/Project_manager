@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Web.Script.Serialization;
+using System.Diagnostics;
 
 namespace TaskManager.Controllers
 {
@@ -198,7 +199,20 @@ namespace TaskManager.Controllers
             return Content("");
         }
 
-        
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddUser(string name, string user_role, string user, string project)
+        {
+            string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+            Debug.WriteLine(name+"  "+user_role);
+            if (role == "1" || role == "2")
+            {
+                //Dao.Account.createTask(sprint, name, description, difficulty, type);
+            }
+            return Content("");
+        }
+
 
     }
 }
