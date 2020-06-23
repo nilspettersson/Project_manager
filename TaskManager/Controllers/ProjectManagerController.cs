@@ -206,10 +206,13 @@ namespace TaskManager.Controllers
         {
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
             Debug.WriteLine(name+"  "+user_role);
-            if (role == "1" || role == "2")
+            if (role == "1")
             {
+                //user_id is the owner.
+                string user_id = Dao.Account.getUserIdByName(user);
+                string projectId = Dao.Account.getProjectId(user_id, project);
+
                 string userId = Dao.Account.getUserIdByName(name);
-                string projectId = Dao.Account.getProjectId(userId, project);
                 Dao.Account.addUserToProject(userId, user_role, projectId);
             }
             return Content("");
