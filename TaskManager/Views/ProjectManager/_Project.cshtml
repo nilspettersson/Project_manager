@@ -323,6 +323,19 @@
                 <tr>
                     <td>@j</td>
                     <td>@user[0]</td>
+                    @if (@user[1] == 1)
+                    {
+                        <td>Owner</td>
+                    }
+                    else if (@user[1] == 2)
+                    {
+                        <td>Manager</td>
+                    }
+                    else if (@user[1] == 3)
+                    {
+                        <td>Developer</td>
+                    }
+
                 </tr>
                     j++;
                 }
