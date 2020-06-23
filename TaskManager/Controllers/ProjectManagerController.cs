@@ -208,7 +208,9 @@ namespace TaskManager.Controllers
             Debug.WriteLine(name+"  "+user_role);
             if (role == "1" || role == "2")
             {
-                //Dao.Account.createTask(sprint, name, description, difficulty, type);
+                string userId = Dao.Account.getUserIdByName(name);
+                string projectId = Dao.Account.getProjectId(userId, project);
+                Dao.Account.addUserToProject(userId, user_role, projectId);
             }
             return Content("");
         }
