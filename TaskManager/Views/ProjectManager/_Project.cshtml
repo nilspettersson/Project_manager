@@ -12,7 +12,8 @@
     <!--menu start-->
     @Html.ActionLink("overview", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "" }, new { @class = "btn btn btn-outline-primary mr-3" })
     @Html.ActionLink("current sprint", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "sprint" }, new { @class = "btn btn btn-outline-primary mr-3" })
-    @Html.ActionLink("stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn btn-outline-primary mr-3" })
+    @Html.ActionLink("Users", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "users" }, new { @class = "btn btn btn-outline-primary mr-3" })
+    @Html.ActionLink("Stats", "users", "ProjectManager", new { user = @ViewBag.userName, project = @ViewBag.projectName, type = "stats" }, new { @class = "btn btn btn-outline-primary mr-3" })
     <!--menu end-->
 
     @if (ViewBag.type == "overview")
@@ -34,7 +35,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Start</th>
                     <th scope="col">End</th>
-                    <th scope="col">status</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -301,6 +302,11 @@
 
 
         }
+    }
+
+    else if (ViewBag.type == "users")
+    {
+        <h1>users</h1>
     }
 
 

@@ -100,6 +100,12 @@ namespace TaskManager.Controllers
 
                     ViewBag.type = "sprint";
                 }
+                //users. shows users for the project.
+                else if (type == "users")
+                {
+
+                    ViewBag.type = "users";
+                }
 
                 ViewBag.isProject = true;
                 ViewBag.projectName = project;
