@@ -87,10 +87,14 @@ $(function () {
                 project: $("#projectName").val()
             },
             success: function (result) {
-                console.log(result);
                 var json = JSON.parse(result);
                 console.log(json);
-                //location.reload(false);
+                if (json.success) {
+                    location.reload(false);
+                }
+                else {
+                    alert(json.message);
+                }
             }
         });
 

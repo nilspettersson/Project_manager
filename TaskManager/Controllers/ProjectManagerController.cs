@@ -220,7 +220,7 @@ namespace TaskManager.Controllers
                 }
                 else if(Dao.Account.UserIsInProject(userId, projectId))
                 {
-                    return Content("{ message: 'User already exist' , \"success\": false }");
+                    return Content("{ \"message\": \"User already exist\" , \"success\": false }");
                 }
                 else
                 {
@@ -229,7 +229,7 @@ namespace TaskManager.Controllers
 
                 
             }
-            return Content("{ message: 'User added to project' , \"success\": true }");
+            return Content("{ \"message\": \"User added to project\" , \"success\": true }");
         }
 
 
