@@ -71,7 +71,7 @@ namespace TaskManager.Models
 
             public static DataRow[] getUsers(string project_id)
             {
-                var row = Dao.Execute("select username, user_project_role.role_id from account inner join user_project_role on user_project_role.user_id = account.auth_id" +
+                var row = Dao.Execute("select username, user_project_role.role_id, auth_id from account inner join user_project_role on user_project_role.user_id = account.auth_id" +
                     " where user_project_role.project_id = '" + project_id + "'");
                 if (row.Length == 0)
                 {

@@ -360,6 +360,7 @@
     <Content Include="Views\Shared\_CreateTask.cshtml" />
     <Content Include="Views\Shared\_RemoveSprint.cshtml" />
     <Content Include="Views\Shared\_AddUser.cshtml" />
+    <Content Include="Views\Shared\_RemoveUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -307,6 +307,9 @@
 
     else if (ViewBag.type == "users")
     {
+        <div class="mt-4">
+            <h2>Users</h2>
+        </div>
 
         @Html.Partial("_AddUser")
 
@@ -324,23 +327,25 @@
 
                 @foreach (var user in ViewBag.users)
                 {
-                    <tr>
-                        <td>@j</td>
-                        <td>@user[0]</td>
-                        @if (@user[1] == 1)
-                        {
-                            <td>Owner</td>
-                        }
-                        else if (@user[1] == 2)
-                        {
-                            <td>Manager</td>
-                        }
-                        else if (@user[1] == 3)
-                        {
-                            <td>Developer</td>
-                        }
+                <tr>
+                    <td>@j</td>
+                    <td>@user[0]</td>
+                    @if (@user[1] == 1)
+                    {
+                        <td>Owner</td>
+                    }
+                    else if (@user[1] == 2)
+                    {
+                        <td>Manager</td>
+                    }
+                    else if (@user[1] == 3)
+                    {
+                        <td>Developer</td>
+                    }
+                    @Html.Partial("_RemoveUser")
+                    <td><button id="removeSprint_@user[2]" class="btn btn-outline-danger" data-toggle="modal" data-target="#user_remove_modal" value="@user[2]" onclick="setUserId(this)">Remove</button></td>
 
-                    </tr>
+                </tr>
                     j++;
                 }
             </tbody>

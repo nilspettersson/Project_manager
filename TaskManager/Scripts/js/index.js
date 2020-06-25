@@ -100,10 +100,30 @@ $(function () {
 
     });
 
+    $("#user_remove").click(function () {
+
+        $.ajax({
+            url: url + "RemoveUser",
+            type: "POST",
+            data: {
+                user_id: $("#user_id").val(),
+                project: $("#projectName").val()
+            },
+            success: function (result) {
+                location.reload(false);
+            }
+        });
+
+    });
+
 
 
 });
 
 function setSprintId(btn) {
     $("#sprint_id").val(btn.value);
+}
+
+function setUserId(btn) {
+    $("#user_id").val(btn.value);
 }

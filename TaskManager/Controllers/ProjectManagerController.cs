@@ -232,6 +232,24 @@ namespace TaskManager.Controllers
             return Content("{ \"message\": \"User added to project\" , \"success\": true }");
         }
 
+        [Authorize]
+        [HttpPost]
+        public ActionResult RemoveUser(string user_id, string project)
+        {
+            string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+            if (role == "1")
+            {
+                Dao.Account.removeUser(user_id, project);
+
+                return Content("");
+            }
+            else
+            {
+                return Content("");
+            }
+
+        }
+
 
     }
 }
