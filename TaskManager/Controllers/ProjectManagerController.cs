@@ -239,7 +239,8 @@ namespace TaskManager.Controllers
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
             if (role == "1")
             {
-                Dao.Account.removeUser(user_id, project);
+                string projectId = Dao.Account.getProjectId(user_id, project);
+                Dao.Account.removeUserFromProject(user_id, projectId);
 
                 return Content("");
             }
