@@ -87,7 +87,10 @@ $(function () {
                 project: $("#projectName").val()
             },
             success: function (result) {
-                location.reload(false);
+                console.log(result);
+                var json = JSON.parse(result);
+                console.log(json);
+                //location.reload(false);
             }
         });
 

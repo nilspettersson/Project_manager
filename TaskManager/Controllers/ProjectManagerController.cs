@@ -216,11 +216,11 @@ namespace TaskManager.Controllers
                 string userId = Dao.Account.getUserIdByName(name);
                 if(userId == null)
                 {
-                    return Content("");
+                    return Content("{ \"message\": \"Could not find User\", \"success\": false }");
                 }
                 else if(Dao.Account.UserIsInProject(userId, projectId))
                 {
-                    return Content("");
+                    return Content("{ message: 'User already exist' , \"success\": false }");
                 }
                 else
                 {
@@ -229,7 +229,7 @@ namespace TaskManager.Controllers
 
                 
             }
-            return Content("");
+            return Content("{ message: 'User added to project' , \"success\": true }");
         }
 
 
