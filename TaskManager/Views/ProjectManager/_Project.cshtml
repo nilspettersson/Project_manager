@@ -41,6 +41,7 @@
                 </tr>
             </thead>
             <tbody>
+                @Html.Partial("_RemoveSprint")
 
                 @foreach (var sprint in ViewBag.sprints)
                 {
@@ -58,7 +59,7 @@
                             <td>Done</td>
                         }
 
-                        @Html.Partial("_RemoveSprint")
+
                         <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
                     </tr>
                     i++;
@@ -321,31 +322,38 @@
                     <th scope="col">User</th>
                     <th scope="col">Name</th>
                     <th scope="col">Role</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
+                @Html.Partial("_RemoveUser")
 
                 @foreach (var user in ViewBag.users)
                 {
-                <tr>
-                    <td>@j</td>
-                    <td>@user[0]</td>
-                    @if (@user[1] == 1)
-                    {
-                        <td>Owner</td>
-                    }
-                    else if (@user[1] == 2)
-                    {
-                        <td>Manager</td>
-                    }
-                    else if (@user[1] == 3)
-                    {
-                        <td>Developer</td>
-                    }
-                    @Html.Partial("_RemoveUser")
-                    <td><button id="removeSprint_@user[2]" class="btn btn-outline-danger" data-toggle="modal" data-target="#user_remove_modal" value="@user[2]" onclick="setUserId(this)">Remove</button></td>
+                    <tr>
+                        <td>@j</td>
+                        <td>@user[0]</td>
+                        @if (@user[1] == 1)
+                        {
+                            <td>Owner</td>
+                        }
+                        else if (@user[1] == 2)
+                        {
+                            <td>Manager</td>
+                        }
+                        else if (@user[1] == 3)
+                        {
+                            <td>Developer</td>
+                        }
 
-                </tr>
+                        @if (@user[1] != 1)
+                        {
+                            <td><button id="removeSprint_@user[2]" class="btn btn-outline-danger" data-toggle="modal" data-target="#user_remove_modal" value="@user[2]" onclick="setUserId(this)">Remove</button></td>
+                        }
+
+
+
+                    </tr>
                     j++;
                 }
             </tbody>
