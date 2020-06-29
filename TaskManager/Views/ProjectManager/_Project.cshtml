@@ -62,7 +62,8 @@
                             <td>Done</td>
                         }
 
-                        @if (ViewBag.role == "1"){
+                        @if (ViewBag.role == "1")
+                        {
                             <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
                         }
                     </tr>
@@ -330,7 +331,10 @@
 
         @Html.Partial("_AddUser")
 
-        <button id="new_User" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#user_modal">Add user</button>
+        if (ViewBag.role == "1")
+        {
+            <button id="new_User" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#user_modal">Add user</button>
+        }
 
         <table class="table">
             <thead>
@@ -362,7 +366,7 @@
                             <td>Developer</td>
                         }
 
-                        @if (@user[1] != 1)
+                        @if (@user[1] != 1 && ViewBag.role == "1")
                         {
                             <td><button id="removeSprint_@user[2]" class="btn btn-outline-danger" data-toggle="modal" data-target="#user_remove_modal" value="@user[2]" onclick="setUserId(this)">Remove</button></td>
                         }
