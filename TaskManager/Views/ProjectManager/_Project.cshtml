@@ -25,9 +25,17 @@
             <h2>@ViewBag.projectName</h2>
         </div>
 
-        @Html.Partial("_CreateSprint")
 
-        <button id="new_sprint" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#sprint_modal">new sprint</button>
+        @Html.Partial("_CreateSprint")
+        if (ViewBag.role == "1")
+        {
+            <button id="new_sprint" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#sprint_modal">new sprint</button>
+        }
+        else
+        {
+            <button id="new_sprint" class="btn btn-outline-light mt-3 mb-3">new sprint</button>
+        }
+
 
         <table class="table">
             <thead>
@@ -77,13 +85,25 @@
         {
             @Html.Partial("_CreateSprint");
 
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="display-4">You have no active sprint</h5>
-                    <p class="card-text">Create a sprint to start to using this page!.</p>
-                    <button id="new_sprint" class="btn btn-outline-success " data-toggle="modal" data-target="#sprint_modal">new sprint</button>
+            if (ViewBag.role == "1")
+            {
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="display-4">You have no active sprint</h5>
+                        <p class="card-text">Create a sprint to start to using this page!.</p>
+                        <button id="new_sprint" class="btn btn-outline-success " data-toggle="modal" data-target="#sprint_modal">new sprint</button>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="display-4">There is no active sprint</h5>
+                    </div>
+                </div>
+            }
+
 
         }
         else
