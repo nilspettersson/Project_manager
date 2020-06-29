@@ -121,12 +121,12 @@
 
 
             <ul class="nav mt-2 mb-2">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Filters</a>
-                </li>
-                <li class="nav-item">
-                    <button id="new_task" class="btn btn-outline-success " data-toggle="modal" data-target="#task_modal">new task</button>
-                </li>
+                @if (ViewBag.role == "1" || ViewBag.role == "2")
+                {
+                    <li class="nav-item">
+                        <button id="new_task" class="btn btn-outline-success " data-toggle="modal" data-target="#task_modal">new task</button>
+                    </li>
+                }
             </ul>
 
 
@@ -368,7 +368,7 @@
 
                         @if (@user[1] != 1 && ViewBag.role == "1")
                         {
-                            <td><button id="removeSprint_@user[2]" class="btn btn-outline-danger" data-toggle="modal" data-target="#user_remove_modal" value="@user[2]" onclick="setUserId(this)">Remove</button></td>
+                            <td><button id="removeUser_@user[2]" class="btn btn-outline-danger" data-toggle="modal" data-target="#user_remove_modal" value="@user[2]" onclick="setUserId(this)">Remove</button></td>
                         }
 
 
