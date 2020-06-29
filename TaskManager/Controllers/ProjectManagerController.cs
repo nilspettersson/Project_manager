@@ -58,17 +58,15 @@ namespace TaskManager.Controllers
             //if a project is selected.
             else
             {
+                string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
+                ViewBag.role = role;
+
                 //overview
-                if(type == null)
+                if (type == null)
                 {
                     if (User.Identity.IsAuthenticated)
                     {
                         //checks if the user owns this project.
-                        string username = Dao.Account.getUsername(User.Identity.GetUserId());
-                        if (username == user)
-                        {
-                            
-                        }
 
                         DataRow[] sprints = Dao.Account.getAllSprints(project);
                         ViewBag.sprints = sprints;
@@ -192,7 +190,7 @@ namespace TaskManager.Controllers
         {
             string role = Dao.Account.getRole(User.Identity.GetUserId(), project);
 
-            if (role == "1" || role == "2")
+            if (role == "1" || role == "2" || role == "3")
             {
                 Dao.Account.setTaskState(task, state);
             }
