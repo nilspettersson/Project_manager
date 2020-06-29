@@ -31,11 +31,6 @@
         {
             <button id="new_sprint" class="btn btn-outline-success mt-3 mb-3" data-toggle="modal" data-target="#sprint_modal">new sprint</button>
         }
-        else
-        {
-            <button id="new_sprint" class="btn btn-outline-light mt-3 mb-3">new sprint</button>
-        }
-
 
         <table class="table">
             <thead>
@@ -67,8 +62,9 @@
                             <td>Done</td>
                         }
 
-
-                        <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
+                        @if (ViewBag.role == "1"){
+                            <td><button id="removeSprint_@sprint[0]" class="btn btn-outline-danger" data-toggle="modal" data-target="#sprint_remove_modal" value="@sprint[0]" onclick="setSprintId(this)">Remove</button></td>
+                        }
                     </tr>
                     i++;
                 }
