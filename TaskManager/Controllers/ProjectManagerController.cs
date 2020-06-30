@@ -42,7 +42,18 @@ namespace TaskManager.Controllers
                     //if you own the user page you can see the projects.
                     if (username == user)
                     {
-                        ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+
+                        if (Request["filter"] == null)
+                        {
+                            ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                        }
+                        else if (Request["filter"] == "all projects")
+                        {
+                            ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                        }
+
+
+                        //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
                     }
                     else
                     {
@@ -116,6 +127,24 @@ namespace TaskManager.Controllers
                 return View();
             }
             
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult ChangeFilter(string filter, string user)
+        {
+            
+            if (filter == "all projects")
+            {
+                Debug.Print("asdasdasdasd yes");
+                ViewBag.projects = new DataRow[0]; /*Dao.Account.getAllProjectsByUsername(user);*/
+            }
+            else
+            {
+                Debug.Print("ddddddddddddd no");
+            }
+
+            return Content("");
         }
 
 

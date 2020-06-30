@@ -7,6 +7,7 @@
 
 <script src="~/Scripts/js/index.js"></script>
 
+<input type="hidden" id="user" value="@ViewBag.userName">
 
 @if (ViewBag.isProject == false)
 {
@@ -18,12 +19,12 @@
         <button id="new" class="btn btn-outline-success mr-3" data-toggle="modal" data-target="#project_modal">new project</button>
 
         <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button id="filter" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 all projects
             </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">all projects</a>
-                <a class="dropdown-item" href="#">your projects</a>
+                <a id="allProjects" class="dropdown-item" href="#">all projects</a>
+                <a id="YourProjects" class="dropdown-item" href="#">your projects</a>
             </div>
         </div>
 

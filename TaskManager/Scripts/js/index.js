@@ -1,7 +1,22 @@
 ﻿var url = "https://localhost:44373/ProjectManager/";
 $(function () {
 
-    
+
+    $("#allProjects").click(function () {
+        $.ajax({
+            url: url + "Users",
+            type: "GET",
+            data: {
+                filter: "all projects",
+                user: $("#user").val(),
+            },
+            success: function (result) {
+                $("body").html(result);
+                //location.reload(false);
+            }
+        });
+
+    });
 
     $("#project_create").click(function () {
         $.ajax({
