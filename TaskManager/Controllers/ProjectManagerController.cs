@@ -51,8 +51,11 @@ namespace TaskManager.Controllers
                         {
                             ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
                         }
-
-
+                        else if (Request["filter"] == "your projects")
+                        {
+                            ViewBag.projects = Dao.Account.getAllOwnedProjectsByUsername(user);
+                        }
+                        
                         //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
                     }
                     else

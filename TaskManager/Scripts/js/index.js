@@ -12,7 +12,21 @@ $(function () {
             },
             success: function (result) {
                 $("body").html(result);
-                //location.reload(false);
+            }
+        });
+
+    });
+
+    $("#yourProjects").click(function () {
+        $.ajax({
+            url: url + "Users",
+            type: "GET",
+            data: {
+                filter: "your projects",
+                user: $("#user").val(),
+            },
+            success: function (result) {
+                $("body").html(result);
             }
         });
 
