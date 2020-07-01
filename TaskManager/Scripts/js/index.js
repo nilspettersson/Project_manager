@@ -1,6 +1,14 @@
 ﻿var url = "https://localhost:44373/ProjectManager/";
 $(function () {
+    console.log("init");
 
+    init();
+
+
+});
+
+
+function init() {
 
     $("#allProjects").click(function () {
         $.ajax({
@@ -11,7 +19,11 @@ $(function () {
                 user: $("#user").val(),
             },
             success: function (result) {
-                $("body").html(result);
+                var doc = stringToHTML(result);
+                var projects = doc.body.childNodes[3].childNodes[7].childNodes[11];
+                $("#projects").html(projects.innerHTML);
+
+                init();
             }
         });
 
@@ -26,7 +38,11 @@ $(function () {
                 user: $("#user").val(),
             },
             success: function (result) {
-                $("body").html(result);
+                var doc = stringToHTML(result);
+                var projects = doc.body.childNodes[3].childNodes[7].childNodes[11];
+                $("#projects").html(projects.innerHTML);
+                
+                init();
             }
         });
 
@@ -59,7 +75,7 @@ $(function () {
                 weeks: $("#sprint_weeks").val(),
                 user: $("#user").val(),
                 project: $("#projectName").val()
-            }, 
+            },
             success: function (result) {
                 location.reload(false);
             }
@@ -146,8 +162,8 @@ $(function () {
     });
 
 
+}
 
-});
 
 function setSprintId(btn) {
     $("#sprint_id").val(btn.value);
@@ -156,3 +172,9 @@ function setSprintId(btn) {
 function setUserId(btn) {
     $("#user_id").val(btn.value);
 }
+
+
+var stringToHTML = function (str) {
+    var doc = new DOMParser().parseFromString(str, 'text/html');
+    return doc;
+};

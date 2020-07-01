@@ -23,8 +23,8 @@
                 all projects
             </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a id="allProjects" class="dropdown-item" href="#">all projects</a>
-                <a id="yourProjects" class="dropdown-item" href="#">your projects</a>
+                <button id="allProjects" class="dropdown-item">all projects</button>
+                <button id="yourProjects" class="dropdown-item">your projects</button>
             </div>
         </div>
 
@@ -37,29 +37,30 @@
         </form>
 
         <!--menu end-->
+        <div id="projects">
+            @foreach (var project in ViewBag.projects)
+            {
+                <div class="card w-auto mt-2">
+                    <div class="card-body">
+                        <a href="https://localhost:44373/ProjectManager/users/@project["username"]/@project["name"]" id="@project["name"]" class="btn btn-link float-right projects">
+                            go to project
+                        </a>
 
-        @foreach (var project in ViewBag.projects)
-        {
-            <div class="card w-auto mt-2">
-                <div class="card-body">
-                    <a href="https://localhost:44373/ProjectManager/users/@project["username"]/@project["name"]" id="@project["name"]" class="btn btn-link float-right projects">
-                        go to project
-                    </a>
-
-                    <h4 class="card-title">@project["name"]</h4>
+                        <h4 class="card-title">@project["name"]</h4>
 
 
-                    <button class="btn btn-link text-info pt-3" type="button" data-toggle="collapse" data-target="#desc_@project["id"]" aria-expanded="false" aria-controls="collapseExample">
-                        show description
-                    </button>
+                        <button class="btn btn-link text-info pt-3" type="button" data-toggle="collapse" data-target="#desc_@project["id"]" aria-expanded="false" aria-controls="collapseExample">
+                            show description
+                        </button>
 
-                    <div class="collapse" id="desc_@project["id"]">
-                        <p class="card-text">@project["description"]</p>
+                        <div class="collapse" id="desc_@project["id"]">
+                            <p class="card-text">@project["description"]</p>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        }
+            }
+        </div>
 
     </div>
 }
