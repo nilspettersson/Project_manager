@@ -131,7 +131,14 @@ namespace TaskManager.Models
                     " inner join account on account.auth_id = user_project_role.user_id" +
                     " where account.username = '" + username + "' and user_project_role.role_id = '1'");
             }
-
+            public static DataRow[] getAllProjectsBySearch(string username, string search)
+            {
+                return Dao.Execute("select project.id, project.name, project.description, account.username from project" +
+                    " inner join user_project_role on project.id = user_project_role.project_id" +
+                    " inner join account on account.auth_id = user_project_role.user_id" +
+                    " where account.username = '" + username + "' and project.name like '%" + search + "%' ");
+            }
+            
             public static string getRole(string userId, string projectName)
             {
                 var row = Dao.Execute("select role_id from user_project_role inner join project on user_project_role.project_id = project.id where user_id = '" + userId + "' and project.name = '"+projectName+"'");

@@ -52,14 +52,13 @@ function init() {
             url: url + "Users",
             type: "GET",
             data: {
-                text: $("#searchText").val(),
+                search: $("#searchText").val(),
                 user: $("#user").val(),
             },
             success: function (result) {
                 var doc = stringToHTML(result);
                 var projects = doc.body.childNodes[3].childNodes[7].childNodes[11];
                 $("#projects").html(projects.innerHTML);
-
             }
         });
 

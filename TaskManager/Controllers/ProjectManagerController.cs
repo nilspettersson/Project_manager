@@ -56,14 +56,10 @@ namespace TaskManager.Controllers
                             ViewBag.projects = Dao.Account.getAllOwnedProjectsByUsername(user);
                         }
 
-                        if (Request["search"] == null)
+                        if (Request["search"] != null)
                         {
-                            Debug.Print("asdasdasdasdasdsa");
-                            //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
-                        }
-                        else
-                        {
-                            //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                            Debug.Print("hello********************");
+                            ViewBag.projects = Dao.Account.getAllProjectsBySearch(user, Request["search"]);
                         }
                     }
                     else
