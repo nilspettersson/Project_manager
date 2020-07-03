@@ -55,8 +55,16 @@ namespace TaskManager.Controllers
                         {
                             ViewBag.projects = Dao.Account.getAllOwnedProjectsByUsername(user);
                         }
-                        
-                        //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+
+                        if (Request["search"] == null)
+                        {
+                            Debug.Print("asdasdasdasdasdsa");
+                            //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                        }
+                        else
+                        {
+                            //ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                        }
                     }
                     else
                     {
@@ -159,6 +167,7 @@ namespace TaskManager.Controllers
 
             return Content("");
         }
+
 
         [Authorize]
         [HttpPost]
