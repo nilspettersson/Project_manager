@@ -45,18 +45,32 @@ namespace TaskManager.Controllers
 
                         if (Request["filter"] == null || Request["filter"] == "all projects")
                         {
-                            ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                            if (Request["search"] != null)
+                            {
+                                Debug.Print("hello********************");
+                                ViewBag.projects = Dao.Account.getAllProjectsBySearch(user, Request["search"]);
+                            }
+                            else
+                            {
+                                ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
+                            }
+                            
                         }
                         else if (Request["filter"] == "your projects")
                         {
-                            ViewBag.projects = Dao.Account.getAllOwnedProjectsByUsername(user);
+                            if (Request["search"] != null)
+                            {
+                                Debug.Print("hello********************");
+                                ViewBag.projects = Dao.Account.getAllOwnedProjectsBySearch(user, Request["search"]);
+                            }
+                            else
+                            {
+                                ViewBag.projects = Dao.Account.getAllOwnedProjectsByUsername(user);
+                            }
+                            
                         }
 
-                        if (Request["search"] != null)
-                        {
-                            Debug.Print("hello********************");
-                            ViewBag.projects = Dao.Account.getAllProjectsBySearch(user, Request["search"]);
-                        }
+                        
                     }
                     else
                     {

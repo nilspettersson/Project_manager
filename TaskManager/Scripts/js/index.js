@@ -54,6 +54,7 @@ function init() {
             type: "GET",
             data: {
                 search: $("#searchText").val(),
+                filter: $("#filter").html(),
                 user: $("#user").val(),
             },
             success: function (result) {
