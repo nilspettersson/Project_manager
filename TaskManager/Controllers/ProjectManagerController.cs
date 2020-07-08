@@ -43,11 +43,7 @@ namespace TaskManager.Controllers
                     if (username == user)
                     {
 
-                        if (Request["filter"] == null)
-                        {
-                            ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
-                        }
-                        else if (Request["filter"] == "all projects")
+                        if (Request["filter"] == null || Request["filter"] == "all projects")
                         {
                             ViewBag.projects = Dao.Account.getAllProjectsByUsername(user);
                         }
