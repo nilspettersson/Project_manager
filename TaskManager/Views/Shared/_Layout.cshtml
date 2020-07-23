@@ -42,12 +42,6 @@
                         @Html.ActionLink("My projects", "Users", "ProjectManager", new { user = "not logged in" }, new { @class = "nav-link" })
                     }
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Explore", "Index", "ProjectManager", new { @class = "nav-link" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })
-                </li>
 
             </ul>
             @Html.Partial("_LoginPartial")
